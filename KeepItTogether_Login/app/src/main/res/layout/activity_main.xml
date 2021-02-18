@@ -9,6 +9,19 @@
     android:gravity = "center"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="KeepItTogether"
+            android:textColor="#ffff4444"
+            android:textScaleX="1.5" />
+    </LinearLayout>
+
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
@@ -36,29 +49,30 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:padding = "10dp"
-        android:gravity = "center"
-        android:background="@drawable/round_edit_text">
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_edit_text"
+        android:gravity="center"
+        android:padding="10dp"
+        android:translationY="5dp">
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_lock"/>
+            android:src="@drawable/ic_lock" />
 
         <EditText
+            android:id="@+id/password"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:id="@+id/password"
+            android:background="@android:color/transparent"
             android:hint="Enter Password"
             android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:background="@android:color/transparent"/>
+            android:textColorHint="@android:color/white" />
     </LinearLayout>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/bt_submit"
         android:text="Submit"
