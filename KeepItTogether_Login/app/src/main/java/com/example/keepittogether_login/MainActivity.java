@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // get widgets from xml file
         etUsername = findViewById(R.id.et_username);
         etPassword = findViewById(R.id.et_password);
         btSubmit = findViewById(R.id.bt_submit);
@@ -26,10 +27,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                // make request to database here
+                // also need to run validation on input to stop SQL injection / other security stuff
                 if (etUsername.getText().toString().equals("ADMIN") && etPassword.getText().toString().equals("ADMIN")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(
                             MainActivity.this
                     );
+                    // alert box for user
                     builder.setIcon(R.drawable.ic_tick);
                     builder.setTitle("Login Successful.");
                     builder.setMessage("Do some stuff now.");
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     AlertDialog alertDialog = builder.create();
                     alertDialog.show();
                 } else {
+                    // text pop up to say invalid
                     Toast.makeText(getApplicationContext(), "INVALID CREDENTIALS",Toast.LENGTH_SHORT).show();
                 }
             }
