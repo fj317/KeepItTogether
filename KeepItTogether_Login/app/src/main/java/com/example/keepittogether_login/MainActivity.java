@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,10 +42,15 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.cancel();
+                            startActivity(new Intent(MainActivity.this , MainMenu.class));
                         }
                     });
                     AlertDialog alertDialog = builder.create();
                     alertDialog.show();
+
+
+                    // Moving to Menu page
+
                 } else {
                     // text pop up to say invalid
                     Toast.makeText(getApplicationContext(), "INVALID CREDENTIALS",Toast.LENGTH_SHORT).show();
