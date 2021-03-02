@@ -8,14 +8,18 @@ import java.util.ArrayList;
 
 public class Client {
     private Socket server;
+    String address;
+    int port;
     public Client(String address, int port) throws IOException {
+        this.address = address;
+        this.port = port;
+    }
+    public String[] select(String userInput) throws IOException {
         try {
             server = new Socket(address,port);
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-    }
-    public String[] select(String userInput){
         try {
             PrintWriter serverOut = new PrintWriter(server.getOutputStream(), true);
             BufferedReader serverIn = new BufferedReader(new InputStreamReader(server.getInputStream()));
@@ -44,7 +48,12 @@ public class Client {
         }
     }
 
-    public Boolean modify(String userInput){
+    public Boolean modify(String userInput) throws IOException {
+        try {
+            server = new Socket(address,port);
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
         try {
             PrintWriter serverOut = new PrintWriter(server.getOutputStream(), true);
             BufferedReader serverIn = new BufferedReader(new InputStreamReader(server.getInputStream()));
