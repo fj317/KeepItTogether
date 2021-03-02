@@ -4,4 +4,7 @@
     <string name="your_tasks">Your Tasks</string>
     <string name="view">View</string>
     <string name="add">Add</string>
+    <string name="graphs">Graphs</string>
+    <string name="to_do">TO DO</string>
+    <string name="completed">Completed</string>
 </resources>

@@ -21,7 +21,7 @@
             android:layout_gravity="center"
             android:textSize="50dp"
             android:fontFamily="monospace"
-            android:text="@string/main_menu">
+            android:text="@string/view">
         </TextView>
 
 
@@ -31,8 +31,8 @@
         android:inputType="textCapSentences"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:id="@+id/bt_your_tasks"
-        android:text="@string/your_tasks"
+        android:id="@+id/bt_graphs"
+        android:text="@string/graphs"
         android:textColor="@android:color/white"
         android:translationY="-200dp"
         android:background="@drawable/menu_button"/>
@@ -42,8 +42,8 @@
         android:inputType="textCapSentences"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:id="@+id/bt_view"
-        android:text="@string/view"
+        android:id="@+id/bt_completed"
+        android:text="@string/completed"
         android:textColor="@android:color/white"
         android:translationY="-125dp"
         android:background="@drawable/menu_button"/>
@@ -52,8 +52,8 @@
         android:inputType="textCapSentences"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:id="@+id/bt_add"
-        android:text="@string/add"
+        android:id="@+id/bt_to_do"
+        android:text="@string/to_do"
         android:textColor="@android:color/white"
         android:translationY="-50dp"
         android:background="@drawable/menu_button"/>
