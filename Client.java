@@ -48,11 +48,14 @@ public class Client {
         }
     }
 
-    public Boolean modify(String userInput) throws IOException {
+    public Boolean modify(String userInput){
         try {
             server = new Socket(address,port);
         } catch (UnknownHostException e) {
             e.printStackTrace();
+        }
+        catch (IOException e){
+            System.out.println(e);
         }
         try {
             PrintWriter serverOut = new PrintWriter(server.getOutputStream(), true);
