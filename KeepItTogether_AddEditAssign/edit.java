@@ -15,7 +15,7 @@ public class edit {
 			assign.chore(choreId, userId);
 		}
 		else {
-			String chores = "UPDATE chores SET description = '" + desc + "'";
+			String chores = "UPDATE chores SET description = '" + desc + "' WHERE chore_id = " + choreId;
 			db.modify(chores);
 			assign.chore(choreId, userId);
 		}

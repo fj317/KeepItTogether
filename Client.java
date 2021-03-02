@@ -55,18 +55,14 @@ public class Client {
             e.printStackTrace();
         }
         catch (IOException e){
-            System.out.println(e);
+            e.printStackTrace();
         }
         try {
-            System.out.println("1");
             PrintWriter serverOut = new PrintWriter(server.getOutputStream(), true);
-            System.out.println("2");
             BufferedReader serverIn = new BufferedReader(new InputStreamReader(server.getInputStream()));
-            System.out.println("3");
 
             serverOut.println("1" + userInput);
             String res = serverIn.readLine();
-            System.out.println("4");
             if(res.equals("1")){
                 return true;
             }
