@@ -7,4 +7,7 @@
     <string name="graphs">Graphs</string>
     <string name="to_do">TO DO</string>
     <string name="completed">Completed</string>
+    <string name="bill">Bill</string>
+    <string name="chore">Chore</string>
+    <string name="bill_chore">Bill/Chore</string>
 </resources>

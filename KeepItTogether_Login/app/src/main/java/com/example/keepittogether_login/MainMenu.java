@@ -30,5 +30,11 @@ public class MainMenu extends AppCompatActivity {
                 }
         });
 
+        btAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainMenu.this , com.example.keepittogether_login.Add.class));
+            }
+        });
     }
 }
