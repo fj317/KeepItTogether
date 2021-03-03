@@ -52,8 +52,15 @@ public class add {
 		Client db = new Client("86.9.93.210", 58934);
 		String prodId = "";
 		String[] checkArr = db.select("SELECT product_id FROM Products WHERE name = '" + name + "'");
-		if (checkArr == null) {
-			
+		if (checkArr[0].isEmpty()) {
+			System.out.println("empty");
+			String products = "INSERT INTO Products (name, description) VALUES ('";
+			products += name + "', '" + desc + "')";
+			db.modify(products);
+			prodId = db.select("SELECT product_id FROM Products WHERE name = '" + name + "'")[0];
+			String trans = "INSERT INTO Transactions (user_id, house_id, date, product_id, price) VALUES (";
+			trans += userId + ", " + houseId + ", '" + date.toString() + "', " + prodId + ", " + price + ")";
+			db.modify(trans);
 		}
 		else {
 			prodId = checkArr[0];

@@ -9,8 +9,4 @@ public class assign {
 			db.modify("INSERT INTO ChoreUsers(chore_id, user_id) VALUES (" + choreId + ", " + userId + ")");
 		}
 	}
-	
-	public static void bill(int trnsId, int houseId, int userId) {
-		//add to database
-	}
 }
