@@ -51,16 +51,12 @@ public class Client {
     public Boolean modify(String userInput){
         try {
             server = new Socket(address,port);
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }
-        catch (IOException e){
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println(e);
         }
         try {
             PrintWriter serverOut = new PrintWriter(server.getOutputStream(), true);
             BufferedReader serverIn = new BufferedReader(new InputStreamReader(server.getInputStream()));
-
             serverOut.println("1" + userInput);
             String res = serverIn.readLine();
             if(res.equals("1")){
