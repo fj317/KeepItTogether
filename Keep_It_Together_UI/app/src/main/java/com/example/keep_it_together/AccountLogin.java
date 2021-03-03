@@ -23,6 +23,7 @@ public class AccountLogin extends AppCompatActivity {
         etPassword = findViewById(R.id.et_password);
         btSubmit = findViewById(R.id.bt_submit);
 
+
         btSubmit.setOnClickListener(new View.OnClickListener() {
 
             @Override

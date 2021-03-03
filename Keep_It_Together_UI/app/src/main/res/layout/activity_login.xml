@@ -13,14 +13,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <EditText
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="KeepItTogether"
-            android:textColor="#ffff4444"
-            android:textScaleX="1.5" />
+            android:layout_gravity="center"
+            android:textSize="40dp"
+            android:fontFamily="monospace"
+            android:text="KeepItTogether">
+        </TextView>
+
     </LinearLayout>
+
 
     <ImageView
         android:layout_width="150dp"
@@ -78,6 +81,32 @@
         android:text="Submit"
         android:textColor="@android:color/white"
         android:layout_marginTop="30dp"
+        android:background="@drawable/round_button"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationY="60dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:fontFamily="monospace"
+            android:text="New user? Register here!">
+        </TextView>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_register"
+        android:text="@string/Register"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="30dp"
+        android:translationY="50dp"
         android:background="@drawable/round_button"/>
 
 </LinearLayout>
