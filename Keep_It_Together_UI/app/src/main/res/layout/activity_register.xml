@@ -103,7 +103,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/round_edit_text"
         android:gravity="center"
-        android:translationY="30"
+        android:translationY="30dp"
         android:padding="10dp">
 
         <ImageView
