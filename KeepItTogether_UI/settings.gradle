@@ -1,2 +1,0 @@
-include ':app'
-rootProject.name = "KeepItTogether_Login"
