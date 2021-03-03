@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 
 public class Register extends AppCompatActivity {
@@ -31,8 +32,7 @@ public class Register extends AppCompatActivity {
         String passwordPattern = "^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$";
         final Pattern passwordRegex = Pattern.compile(passwordPattern);
 
-        btSubmit.setOnClickListener(new android.view.View.OnClickListener() {
-
+        btSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // get text box text
@@ -65,9 +65,9 @@ public class Register extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                dbConnection.modify("INSERT INTO Users (email, password, name) VALUES (" + email + "," + password + ", " + name + ")");
+                dbConnection.modify("INSERT INTO Users (email, password, name) VALUES ('" + email + "', '" + password + "', '" + name + "')");
                 // go back to login page now registering is done
-                startActivity(new Intent(Register.this , com.example.keep_it_together.AccountLogin.class));
+                startActivity(new Intent(Register.this , AccountLogin.class));
             }
         });
     }
@@ -75,5 +75,5 @@ public class Register extends AppCompatActivity {
     private String getText(EditText textBox) {
         return textBox.getText().toString();
     }
-
+    
 }
