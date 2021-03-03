@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class AccountLogin extends AppCompatActivity {
     EditText etEmail, etPassword;
-    Button btSubmit;
+    Button btSubmit, btRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,7 @@ public class AccountLogin extends AppCompatActivity {
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
         btSubmit = findViewById(R.id.bt_submit);
+        btRegister = findViewById(R.id.bt_register);
 
 
         btSubmit.setOnClickListener(new View.OnClickListener() {
@@ -44,5 +45,12 @@ public class AccountLogin extends AppCompatActivity {
             }
         });
 
+        btRegister.setOnClickListener(new View.OnClickListener()  {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AccountLogin.this , Register.class));
+            }
+        });
     }
 }
