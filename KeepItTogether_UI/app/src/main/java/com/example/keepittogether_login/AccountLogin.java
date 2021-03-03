@@ -11,14 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class AccountLogin extends AppCompatActivity {
     EditText etUsername, etPassword;
     Button btSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_account_register);
         // get widgets from xml file
         etUsername = findViewById(R.id.et_username);
         etPassword = findViewById(R.id.et_password);
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 // also need to run validation on input to stop SQL injection / other security stuff
                 if (etUsername.getText().toString().equals("ADMIN") && etPassword.getText().toString().equals("ADMIN")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(
-                            MainActivity.this
+                        AccountLogin.this
                     );
                     // alert box for user
                     builder.setIcon(R.drawable.ic_tick);
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.cancel();
-                            startActivity(new Intent(MainActivity.this , MainMenu.class));
+                            startActivity(new Intent(AccountLogin.this , MainMenu.class));
                         }
                     });
                     AlertDialog alertDialog = builder.create();

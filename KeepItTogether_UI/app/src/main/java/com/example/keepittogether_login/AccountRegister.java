@@ -52,7 +52,7 @@ public class AccountRegister {
                 Client dbConnection = new Client("86.9.93.210", 58934)
                 dbConnection.modify("INSERT INTO Users (email, password, name) VALUES (" + email + "," + password ", " + name + ")");
                 // go back to login page now registering is done
-                startActivity(new Intent(MainActivity.this , com.example.keepittogether_login.View.class));
+                startActivity(new Intent(AccountLogin.this , com.example.keepittogether_login.View.class));
             }
         });
     }
