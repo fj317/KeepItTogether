@@ -34,23 +34,9 @@ public class AccountLogin extends AppCompatActivity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(
                         AccountLogin.this
                     );
-                    // alert box for user
-                    builder.setIcon(R.drawable.ic_tick);
-                    builder.setTitle("Login Successful.");
-                    builder.setMessage("Do some stuff now.");
-                    builder.setNegativeButton("YES", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                            startActivity(new Intent(AccountLogin.this , MainMenu.class));
-                        }
-                    });
-                    AlertDialog alertDialog = builder.create();
-                    alertDialog.show();
-
-
                     // Moving to Menu page
-
+                    startActivity(new Intent(AccountLogin.this , MainMenu.class));
+                    Toast.makeText(getApplicationContext(), "Login successful",Toast.LENGTH_SHORT).show();
                 } else {
                     // text pop up to say invalid
                     Toast.makeText(getApplicationContext(), "INVALID CREDENTIALS",Toast.LENGTH_SHORT).show();
