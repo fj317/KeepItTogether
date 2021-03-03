@@ -35,7 +35,7 @@ public class AccountRegister {
                 if (password != repeatPassword) {
                     // send error message here
                 // if text boxs are empty/null    
-                } else if (name.equals(null) || email.equals(null) || password.equals(null) || repeatPassword.equals(null)) {
+                } else if (name == null || email == null || password == null || repeatPassword == null) {
                     // send error message here
                 }
                 // check email is valid
