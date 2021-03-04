@@ -13,4 +13,8 @@
     <string name="Register">Register</string>
     <string name="enter_email">Enter Email</string>
     <string name="simplify_your_house">Simplify your house!</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="re_enter_password">Re-enter Password</string>
+    <string name="submit">Submit</string>
+    <string name="enter_full_name">Enter Full Name</string>
 </resources>
