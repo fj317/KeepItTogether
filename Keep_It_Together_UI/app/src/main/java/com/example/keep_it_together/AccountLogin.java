@@ -4,15 +4,23 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
+import java.io.IOException;
+import java.util.Arrays;
+
+
 public class AccountLogin extends AppCompatActivity {
     EditText etEmail, etPassword;
     Button btSubmit, btRegister;
+    Client dbConnection = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,24 +32,14 @@ public class AccountLogin extends AppCompatActivity {
         btSubmit = findViewById(R.id.bt_submit);
         btRegister = findViewById(R.id.bt_register);
 
-
         btSubmit.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-                // make request to database here
-                // also need to run validation on input to stop SQL injection / other security stuff
-                if (etEmail.getText().toString().equals("ADMIN") && etPassword.getText().toString().equals("ADMIN")) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(
-                        AccountLogin.this
-                    );
-                    // Moving to Menu page
-                    startActivity(new Intent(AccountLogin.this , MainMenu.class));
-                    Toast.makeText(getApplicationContext(), "Login successful",Toast.LENGTH_SHORT).show();
-                } else {
-                    // text pop up to say invalid
-                    Toast.makeText(getApplicationContext(), "INVALID CREDENTIALS",Toast.LENGTH_SHORT).show();
-                }
+                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                        .permitAll().build();
+                StrictMode.setThreadPolicy(policy);
+                AccountLogin.AsyncTaskRunner runner = new AccountLogin.AsyncTaskRunner();
+                runner.execute();
             }
         });
 
@@ -53,4 +51,62 @@ public class AccountLogin extends AppCompatActivity {
             }
         });
     }
+
+    private class AsyncTaskRunner extends AsyncTask<String, String, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                dbConnection = new Client("86.9.93.210", 58934);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            String email = getText(etEmail);
+            String password = getText(etPassword);
+            // make request to database here
+
+            // check email address exists in databse
+            // if exists, check password matches the one stored
+            // if both true then login successful
+            String dbRequest = "SELECT email, password FROM users WHERE email = '" + email + "'";
+            String[] dbResponse = new String[2];
+            try {
+                dbResponse = dbConnection.select(dbRequest);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            // check if email exists in database
+            if (dbResponse[0].isEmpty()) {
+                // if its not then error message
+                Toast.makeText(getApplicationContext(), "Invalid email",Toast.LENGTH_SHORT).show();
+                return;
+            }
+            System.out.println(dbResponse[0]);
+            // if email is valid, then check the passwords match
+            if (!dbResponse[1].equals(password)) {
+                // if they dont match then error message
+                Toast.makeText(getApplicationContext(), "Invalid password",Toast.LENGTH_SHORT).show();
+                return;
+            }
+            // if both match then allow login
+            startActivity(new Intent(AccountLogin.this , MainMenu.class));
+        }
+
+        private boolean checkEmail() {
+
+            return false;
+        }
+
+    }
+
+
+    private String getText(EditText textBox) {
+        String text = textBox.getText().toString();
+        return text;
+    }
+
 }
