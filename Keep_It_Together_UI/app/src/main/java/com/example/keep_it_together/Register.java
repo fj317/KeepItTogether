@@ -65,27 +65,36 @@ public class Register extends AppCompatActivity {
             String email = getText(etEmail);
             String password = getText(etPassword);
             String repeatPassword = getText(etRepeatPassword);
-            String emailPattern = "[w.-]+@[w.-]+.w{2,4}\b";
+            String emailPattern = "\\b[\\w\\.-]+@[\\w\\.-]+\\.\\w{2,4}\\b";
             final Pattern emailRegex = Pattern.compile(emailPattern);
             String passwordPattern = "^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$";
             final Pattern passwordRegex = Pattern.compile(passwordPattern);
 
+            // if text boxes are empty/null
+            if (name.equals("") || email.equals("") || password.equals("") || repeatPassword.equals("")) {
+                // send error message
+                Toast.makeText(getApplicationContext(), "No data in text-box field.",Toast.LENGTH_SHORT).show();
+                return;
+            }
             // if passwords dont match
-            if (password != repeatPassword) {
-                // send error message here
-                // if text boxs are empty/null
-            } else if (name == null || email == null || password == null || repeatPassword == null) {
-                // send error message here
+            if (!password.equals(repeatPassword)) {
+                // send error message
+                Toast.makeText(getApplicationContext(), "Passwords don't match!",Toast.LENGTH_SHORT).show();
+                return;
             }
             // check email is valid
             Matcher matcher = emailRegex.matcher(email);
             if (!(matcher.matches())) {
-                // error message here
+                // error message
+                Toast.makeText(getApplicationContext(), "Email is not valid",Toast.LENGTH_SHORT).show();
+                return;
             }
             // check password is valid (at least 8 characters, must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number, can contain special character)
             matcher = passwordRegex.matcher(password);
             if (!(matcher.matches())) {
-                // error message here
+                // error message
+                Toast.makeText(getApplicationContext(), "Password is not valid. It must be: 8 characters long, and contain at least 1 uppercase, 1 lowercase and 1 number.",Toast.LENGTH_LONG).show();
+                return;
             }
             // all validations check done so now add valid credentials to database
             dbConnection = null;
@@ -94,13 +103,19 @@ public class Register extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+            // CALCULATE HASH OF PASSWORD AND UPDATE VARIABLE
+
             dbConnection.modify("INSERT INTO Users (email, password, name) VALUES ('" + email + "', '" + password + "', '" + name + "')");
-            // go back to login page now registering is done
-            startActivity(new Intent(Register.this , AccountLogin.class));
 
             Boolean database = dbConnection.modify("INSERT INTO Users (email, password, name) VALUES ('" + email + "', '" + password + "', '" + name + "')");
-            Toast.makeText(getApplicationContext(), database.toString(),Toast.LENGTH_SHORT).show();
-
+            if (database) {
+                Toast.makeText(getApplicationContext(), "Register successful!",Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Register unsuccessful, please try again.",Toast.LENGTH_SHORT).show();
+            }
+            // go back to login page now registering is done
+            startActivity(new Intent(Register.this , AccountLogin.class));
         }
 
     }
