@@ -96,18 +96,23 @@ public class Register extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Password is not valid. It must be: 8 characters long, and contain at least 1 uppercase, 1 lowercase and 1 number.",Toast.LENGTH_LONG).show();
                 return;
             }
-            // all validations check done so now add valid credentials to database
-            dbConnection = null;
+            String dbRequest = "SELECT email FROM users WHERE email = '" + email + "'";
+            String[] dbResponse = new String[1];
             try {
-                dbConnection = new Client("86.9.93.210", 58934);
+                dbResponse = dbConnection.select(dbRequest);
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+            // check if email is already in database
+            if (!dbResponse[0].isEmpty()) {
+                // error message
+                Toast.makeText(getApplicationContext(), "Email already in use.",Toast.LENGTH_LONG).show();
+                return;
             }
 
             // CALCULATE HASH OF PASSWORD AND UPDATE VARIABLE
 
-            dbConnection.modify("INSERT INTO Users (email, password, name) VALUES ('" + email + "', '" + password + "', '" + name + "')");
-
+            // all validations check done so now add valid credentials to database
             Boolean database = dbConnection.modify("INSERT INTO Users (email, password, name) VALUES ('" + email + "', '" + password + "', '" + name + "')");
             if (database) {
                 Toast.makeText(getApplicationContext(), "Register successful!",Toast.LENGTH_SHORT).show();
