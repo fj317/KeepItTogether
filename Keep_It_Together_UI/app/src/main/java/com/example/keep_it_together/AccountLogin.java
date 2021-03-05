@@ -85,7 +85,9 @@ public class AccountLogin extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Invalid email",Toast.LENGTH_SHORT).show();
                 return;
             }
-            System.out.println(dbResponse[0]);
+            // hash password to compare
+            password = BCrypt.hashpw(password, BCrypt.gensalt(12));
+
             // if email is valid, then check the passwords match
             if (!dbResponse[1].equals(password)) {
                 // if they dont match then error message

@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import android.os.AsyncTask;
 
+import android.os.AsyncTask;
 import android.content.Intent;
 import android.os.StrictMode;
 import android.view.View;
@@ -110,7 +110,8 @@ public class Register extends AppCompatActivity {
                 return;
             }
 
-            // CALCULATE HASH OF PASSWORD AND UPDATE VARIABLE
+            // get hash of password
+            password = BCrypt.hashpw(password, BCrypt.gensalt(12));
 
             // all validations check done so now add valid credentials to database
             Boolean database = dbConnection.modify("INSERT INTO Users (email, password, name) VALUES ('" + email + "', '" + password + "', '" + name + "')");
