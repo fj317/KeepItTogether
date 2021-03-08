@@ -21,6 +21,9 @@
     <string name="others">Others</string>
     <string name="Assignment">Assignment</string>
     <string name="name">Name:</string>
+    <string name="description">Description:</string>
+    <string name="repeat">Repeat?</string>
+    <string name="cost">Cost:</string>
     <string-array name="names">
         <item>John</item>
 <!--        add users here-->
