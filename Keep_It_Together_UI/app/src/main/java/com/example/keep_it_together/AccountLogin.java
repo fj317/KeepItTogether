@@ -56,7 +56,7 @@ public class AccountLogin extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             try {
-                dbConnection = new Client("86.9.93.210", 58934);
+                dbConnection = new Client("86.8.35.12", 58934);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -97,12 +97,6 @@ public class AccountLogin extends AppCompatActivity {
             // if both match then allow login
             startActivity(new Intent(AccountLogin.this , MainMenu.class));
         }
-
-        private boolean checkEmail() {
-
-            return false;
-        }
-
     }
 
 
