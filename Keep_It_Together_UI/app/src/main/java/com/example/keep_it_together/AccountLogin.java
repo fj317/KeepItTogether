@@ -98,12 +98,6 @@ public class AccountLogin extends AppCompatActivity {
             // if both match then allow login
             startActivity(new Intent(AccountLogin.this , MainMenu.class));
         }
-
-        private boolean checkEmail() {
-
-            return false;
-        }
-
     }
 
 
