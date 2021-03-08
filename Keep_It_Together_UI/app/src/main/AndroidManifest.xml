@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ToDo"></activity>
+        <activity android:name=".Edit"></activity>
+        <activity android:name=".ToDo" />
         <activity android:name=".Add" />
         <activity android:name=".View" />
         <activity android:name=".MainMenu" />

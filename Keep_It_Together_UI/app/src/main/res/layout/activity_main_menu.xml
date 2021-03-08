@@ -32,8 +32,8 @@
         android:textSize="25dp"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:id="@+id/bt_your_tasks"
-        android:text="@string/your_tasks"
+        android:id="@+id/bt_to_do"
+        android:text="@string/to_do"
         android:textColor="@android:color/white"
         android:translationY="-200dp"
         android:background="@drawable/menu_button"/>
