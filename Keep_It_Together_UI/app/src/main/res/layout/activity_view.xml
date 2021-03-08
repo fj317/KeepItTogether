@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:textSize="50dp"
+            android:textSize="50sp"
             android:fontFamily="monospace"
             android:text="@string/view">
         </TextView>
@@ -29,6 +29,7 @@
 
     <Button
         android:inputType="textCapSentences"
+        android:textSize="25dp"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:id="@+id/bt_graphs"
@@ -40,6 +41,7 @@
 
     <Button
         android:inputType="textCapSentences"
+        android:textSize="25dp"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:id="@+id/bt_completed"
@@ -50,6 +52,7 @@
 
     <Button
         android:inputType="textCapSentences"
+        android:textSize="25dp"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:id="@+id/bt_to_do"

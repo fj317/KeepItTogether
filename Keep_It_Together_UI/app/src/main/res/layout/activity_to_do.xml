@@ -19,9 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:textSize="50dp"
+            android:textSize="50sp"
             android:fontFamily="monospace"
-            android:text="@string/main_menu">
+            android:text="@string/to_do">
         </TextView>
 
 
@@ -44,8 +44,8 @@
         android:textSize="25dp"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:id="@+id/bt_view"
-        android:text="@string/view"
+        android:id="@+id/bt_Unassigned"
+        android:text="@string/unassigned"
         android:textColor="@android:color/white"
         android:translationY="-125dp"
         android:background="@drawable/menu_button"/>
@@ -55,8 +55,8 @@
         android:textSize="25dp"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:id="@+id/bt_add"
-        android:text="@string/add"
+        android:id="@+id/bt_others"
+        android:text="@string/others"
         android:textColor="@android:color/white"
         android:translationY="-50dp"
         android:background="@drawable/menu_button"/>
