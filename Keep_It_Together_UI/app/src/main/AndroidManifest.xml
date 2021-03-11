@@ -13,17 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ToDo"></activity>
+        <activity android:name=".YourTasks">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+        <activity android:name=".ToDo" />
         <activity android:name=".Add" />
         <activity android:name=".View" />
         <activity android:name=".MainMenu" />
         <activity android:name=".Register" />
         <activity android:name=".AccountLogin">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
