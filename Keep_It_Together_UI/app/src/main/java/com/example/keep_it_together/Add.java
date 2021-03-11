@@ -29,6 +29,7 @@ public class Add extends AppCompatActivity {
         aSwitch = (android.widget.Switch) findViewById(R.id.chore_bill_switch);
         et_add_cost.setVisibility(View.INVISIBLE);
 
+
         aSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

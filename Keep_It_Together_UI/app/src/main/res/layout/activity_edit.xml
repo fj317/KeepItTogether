@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_light"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".Add">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:translationY="30dp"
+        android:layout_marginBottom="300dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:fontFamily="monospace"
+            android:text="@string/edit"
+            android:textSize="50sp">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <Switch
+        android:id="@+id/chore_bill_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationX="3dp"
+        android:translationY="-265dp">
+    </Switch>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationY="-295sp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:fontFamily="monospace"
+            android:text="Chore      Bill"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationY="-260sp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:fontFamily="monospace"
+            android:text="@string/Assignment"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <Spinner
+        android:translationY="-255dp"
+        android:id="@+id/spinner_assignment"
+        style="@style/Widget.AppCompat.TextView.SpinnerItem"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:entries="@array/names"
+        android:spinnerMode="dropdown" />
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:padding = "10dp"
+        android:gravity = "center"
+        android:background="@android:color/holo_blue_dark"
+        android:translationY="-220dp">
+
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_add_name"
+            android:hint="@string/name"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="150dp"
+        android:layout_width="wrap_content"
+        android:padding = "10dp"
+        android:gravity = "center"
+        android:translationY="-200dp"
+        android:background="@android:color/holo_blue_dark">
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_add_description"
+            android:hint="@string/description"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:translationY="-50dp"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="45dp"
+        android:layout_width="wrap_content"
+        android:padding = "10dp"
+        android:gravity = "center"
+        android:background="@android:color/holo_blue_dark"
+        android:translationY="-180dp">
+
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:id="@+id/et_add_repeat"
+            android:hint="@string/repeat"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="45dp"
+        android:layout_width="wrap_content"
+        android:padding = "10dp"
+        android:gravity = "center"
+        android:background="@android:color/holo_blue_dark"
+        android:translationY="-160dp">
+
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:id="@+id/et_add_cost"
+            android:hint="@string/cost"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="@string/completed"
+        android:translationY="-140dp"
+        android:translationX="-60dp"
+        android:checked="false"/>
+
+
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:id="@+id/bt_edit_save"
+        android:text="@string/save"
+        android:translationY="-220dp"
+        android:translationX="70dp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/menu_button"/>
+
+
+</LinearLayout>
