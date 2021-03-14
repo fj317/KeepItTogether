@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".YourTasks"/>
-        <activity android:name=".Edit"></activity>
+        <activity android:name=".Edit"/>
         <activity android:name=".ToDo" />
         <activity android:name=".Add" />
         <activity android:name=".View" />

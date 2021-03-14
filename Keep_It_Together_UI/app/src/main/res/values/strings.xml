@@ -25,7 +25,6 @@
     <string name="repeat">Repeat?</string>
     <string name="cost">Cost:</string>
     <string name="edit">Edit</string>
-    <string name="completed">Completed</string>
     <string name="keepittogether">KeepItTogether</string>
     <string name="save">Save</string>
     <string-array name="names">
