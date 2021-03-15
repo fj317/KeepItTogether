@@ -13,8 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".YourTasks"/>
-        <activity android:name=".Edit"/>
+        <activity android:name=".CompletedTasks" />
+        <activity android:name=".YourTasks" />
+        <activity android:name=".Edit" />
         <activity android:name=".ToDo" />
         <activity android:name=".Add" />
         <activity android:name=".View" />
@@ -23,7 +24,6 @@
         <activity android:name=".AccountLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter></activity>
     </application>

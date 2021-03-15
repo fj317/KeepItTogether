@@ -27,6 +27,7 @@
     <string name="edit">Edit</string>
     <string name="keepittogether">KeepItTogether</string>
     <string name="save">Save</string>
+    <string name="completed_tasks">Completed Tasks</string>
     <string-array name="names">
         <item>John</item>
         <!--        add users here-->

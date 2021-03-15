@@ -57,7 +57,7 @@ public class AccountLogin extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             try {
-                dbConnection = new Client("86.8.35.12", 58934);
+                dbConnection = new Client("86.9.93.210", 58934);
             } catch (IOException e) {
                 e.printStackTrace();
             }

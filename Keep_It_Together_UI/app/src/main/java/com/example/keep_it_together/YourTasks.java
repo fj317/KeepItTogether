@@ -27,9 +27,8 @@ public class YourTasks extends AppCompatActivity {
 
         for(int i = 0; i <= 10; i++){
             Button button = new Button(this);
-            //buttons.add(button);
+            buttons.add(button);
             button.setBackground(buttonDrawableLayout);
-            //button.setTranslationY(i * 50);
             //button.setTextColor(0xffffff);
             button.setTextSize(25);
             button.setText("Task " + i);
