@@ -31,13 +31,24 @@
         android:layout_height="400dp">
     </LinearLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/bt_date_selector"
-        android:text="@string/select_dates"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text = "@string/number_of_days"
         android:textSize="25sp"
-        android:textColor="@android:color/white"
-        android:background="@drawable/menu_button"/>
+        android:fontFamily="monospace"/>
+
+    <SeekBar
+        android:id="@+id/seekBarDays"
+        android:max="365"
+        android:progress="90"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textDays"
+        android:text="90"
+        android:textSize="20sp"/>
 
 </LinearLayout>
