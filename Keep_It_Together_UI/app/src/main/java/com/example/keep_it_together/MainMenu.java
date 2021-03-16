@@ -48,7 +48,9 @@ public class MainMenu extends AppCompatActivity {
         btYourHouse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainMenu.this , com.example.keep_it_together.YourHouse.class));
+                // work out if user is in a house or not
+                // work out which page to send user to (userNoHouse or yourHouse)
+                startActivity(new Intent(MainMenu.this , com.example.keep_it_together.UserNoHouse.class));
             }
         });
     }

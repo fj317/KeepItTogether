@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="50dp"
+            android:textSize="50sp"
             android:fontFamily="monospace"
             android:text="@string/main_menu">
         </TextView>
@@ -27,8 +27,7 @@
     </LinearLayout>
 
     <Button
-        android:inputType="textCapSentences"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:id="@+id/bt_your_tasks"
@@ -39,8 +38,7 @@
 
 
     <Button
-        android:inputType="textCapSentences"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:id="@+id/bt_view"
@@ -50,8 +48,7 @@
         android:background="@drawable/menu_button"/>
 
     <Button
-        android:inputType="textCapSentences"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:id="@+id/bt_add"
@@ -61,8 +58,7 @@
         android:background="@drawable/menu_button"/>
 
     <Button
-        android:inputType="textCapSentences"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:id="@+id/bt_your_house"

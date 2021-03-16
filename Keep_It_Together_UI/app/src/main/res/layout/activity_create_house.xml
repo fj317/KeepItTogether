@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation = "vertical"
+    android:gravity = "center"
+    tools:context=".CreateHouse">
+
+    <TextView
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:fontFamily="monospace"
+        android:translationY="-150dp"
+        android:paddingHorizontal="25dp"
+        android:layout_gravity="center"
+        android:text="@string/create_your_house">
+    </TextView>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:padding = "10dp"
+        android:gravity = "center"
+        android:translationY="-125dp"
+        android:background="@drawable/round_edit_text">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_house"/>
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_address"
+            android:hint="@string/enter_your_address"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:padding = "10dp"
+        android:gravity = "center"
+        android:translationY="-75dp"
+        android:background="@drawable/round_edit_text">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_letter" />
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_postcode"
+            android:hint="@string/enter_your_postcode"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_submit"
+        android:text="@string/submit"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="30dp"
+        android:translationY="-50dp"
+        android:background="@drawable/round_button"/>
+
+</LinearLayout>

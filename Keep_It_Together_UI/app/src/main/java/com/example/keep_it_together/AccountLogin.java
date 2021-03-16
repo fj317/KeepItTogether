@@ -42,7 +42,7 @@ public class AccountLogin extends AppCompatActivity {
                         .permitAll().build();
                 StrictMode.setThreadPolicy(policy);
                 AccountLogin.AsyncTaskRunner runner = new AccountLogin.AsyncTaskRunner();
-                runner.execute();
+                //runner.execute();
                 startActivity(new Intent(AccountLogin.this , MainMenu.class));
             }
         });

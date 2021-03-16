@@ -31,6 +31,10 @@
     <string name="select_dates">Select Dates</string>
     <string name="number_of_days">Number of days:</string>
     <string name="your_house">Your House</string>
+    <string name="create_a_house">Create a House</string>
+    <string name="create_your_house">Create Your House</string>
+    <string name="enter_your_address">Enter your address</string>
+    <string name="enter_your_postcode">Enter your postcode</string>
     <string-array name="names">
         <item>John</item>
         <!--        add users here-->
