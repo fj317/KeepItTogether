@@ -3,6 +3,7 @@ package com.example.keep_it_together;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,9 @@ public class MainMenu extends AppCompatActivity {
         btAdd = findViewById(R.id.bt_add);
         btYourTasks = findViewById(R.id.bt_your_tasks);
         btYourHouse = findViewById(R.id.bt_your_house);
+
+        //SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+        //btYourHouse.setText(preferences.getString("userID", ""));
 
         btYourTasks.setOnClickListener(new View.OnClickListener() {
             @Override
