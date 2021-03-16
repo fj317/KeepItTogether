@@ -16,8 +16,8 @@
         android:layout_marginBottom="300dp">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textSize="50dp"
             android:fontFamily="monospace"
@@ -46,7 +46,7 @@
         android:id="@+id/bt_view"
         android:text="@string/view"
         android:textColor="@android:color/white"
-        android:translationY="-125dp"
+        android:translationY="-150dp"
         android:background="@drawable/menu_button"/>
 
     <Button
@@ -57,7 +57,18 @@
         android:id="@+id/bt_add"
         android:text="@string/add"
         android:textColor="@android:color/white"
+        android:translationY="-100dp"
+        android:background="@drawable/menu_button"/>
+
+    <Button
+        android:inputType="textCapSentences"
+        android:textSize="25dp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:id="@+id/bt_your_house"
+        android:text="@string/your_house"
         android:translationY="-50dp"
+        android:textColor="@android:color/white"
         android:background="@drawable/menu_button"/>
 
 </LinearLayout>

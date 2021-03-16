@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainMenu extends AppCompatActivity {
-    Button btYourTasks, btView, btAdd;
+    Button btYourTasks, btView, btAdd, btYourHouse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,7 @@ public class MainMenu extends AppCompatActivity {
         btView = findViewById(R.id.bt_view);
         btAdd = findViewById(R.id.bt_add);
         btYourTasks = findViewById(R.id.bt_your_tasks);
+        btYourHouse = findViewById(R.id.bt_your_house);
 
         btYourTasks.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +38,13 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainMenu.this , com.example.keep_it_together.Add.class));
+            }
+        });
+
+        btYourHouse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainMenu.this , com.example.keep_it_together.YourHouse.class));
             }
         });
     }
