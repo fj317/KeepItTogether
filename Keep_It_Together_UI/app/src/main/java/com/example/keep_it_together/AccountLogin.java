@@ -13,6 +13,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
@@ -23,6 +24,7 @@ import java.util.Arrays;
 public class AccountLogin extends AppCompatActivity {
     EditText etEmail, etPassword;
     Button btSubmit, btRegister;
+    ProgressBar progressBar;
     Client dbConnection = null;
 
     @Override
@@ -34,6 +36,8 @@ public class AccountLogin extends AppCompatActivity {
         etPassword = findViewById(R.id.et_password);
         btSubmit = findViewById(R.id.bt_submit);
         btRegister = findViewById(R.id.bt_register);
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
 
         btSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +45,8 @@ public class AccountLogin extends AppCompatActivity {
                 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                         .permitAll().build();
                 StrictMode.setThreadPolicy(policy);
-                AccountLogin.AsyncTaskRunner runner = new AccountLogin.AsyncTaskRunner();
+                //AccountLogin.AsyncTaskRunner runner = new AccountLogin.AsyncTaskRunner();
+                progressBar.setVisibility(View.VISIBLE);
                 //runner.execute();
                 startActivity(new Intent(AccountLogin.this , MainMenu.class));
             }
@@ -88,6 +93,7 @@ public class AccountLogin extends AppCompatActivity {
             if (dbResponse[1].isEmpty()) {
                 // if its not then error message
                 Toast.makeText(getApplicationContext(), "Invalid email",Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
                 return;
             }
             // hash password to compare
@@ -97,6 +103,7 @@ public class AccountLogin extends AppCompatActivity {
             if (!dbResponse[2].equals(password)) {
                 // if they dont match then error message
                 Toast.makeText(getApplicationContext(), "Invalid password",Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
                 return;
             }
             // get userID
