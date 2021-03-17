@@ -15,7 +15,6 @@ import java.io.IOException;
 
 public class UserNoHouse extends AppCompatActivity {
     Button btCreateHouse, btJoinHouse;
-    private String joinCode = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +28,7 @@ public class UserNoHouse extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(UserNoHouse.this);
-                builder.setTitle("Enter house join code:");
+                builder.setTitle("Enter house code:");
 
                 // Set up the input
                 final EditText input = new EditText(UserNoHouse.this);
@@ -39,18 +38,14 @@ public class UserNoHouse extends AppCompatActivity {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        joinCode = input.getText().toString();
-                        try {
-                            // call function which works out which houseID from join code
-                            String houseId = getHouseId(joinCode);
-                            // get userID for the current user
-                            SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
-                            String userID = preferences.getString("userID", "");
-                            // call join house function
-                            // CALL FUNCTION HERE
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        String houseID = input.getText().toString();
+                        // get userID for the current user
+                        SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+                        String userID = preferences.getString("userID", "");
+                        // call join house function
+                        // CALL FUNCTION HERE
+                        // once successfully joined house put house code in preferences
+                        storeHouseID(houseID);
 
                     }
                 });
@@ -61,10 +56,10 @@ public class UserNoHouse extends AppCompatActivity {
                         dialog.cancel();
                     }
                 });
-
                 builder.show();
             }
         });
+
 
         btCreateHouse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,17 +70,11 @@ public class UserNoHouse extends AppCompatActivity {
 
     }
 
-    private String getHouseId(String joinCode) throws IOException {
-        Client dbConnection = new Client("86.9.93.210", 58934);
-        String[] dbResponse = dbConnection.select("SELECT house_id FROM house WHERE house_code = " + joinCode);
-        if (dbResponse[0].isEmpty()) {
-            return null;
-        }
+    private void storeHouseID(String houseId) {
         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
         SharedPreferences.Editor edit = preferences.edit();
-        edit.putString("houseId", dbResponse[0]);
+        edit.putString("houseId", houseId);
         edit.apply();
-        return dbResponse[0];
     }
 
 }

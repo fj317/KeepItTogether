@@ -12,6 +12,7 @@ import java.io.IOException;
 
 public class MainMenu extends AppCompatActivity {
     Button btYourTasks, btView, btAdd, btYourHouse;
+    boolean userInHouse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,11 @@ public class MainMenu extends AppCompatActivity {
         btAdd = findViewById(R.id.bt_add);
         btYourTasks = findViewById(R.id.bt_your_tasks);
         btYourHouse = findViewById(R.id.bt_your_house);
+//        try {
+//            userLogic();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         btYourTasks.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,31 +54,42 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // work out if user is in a house or not
-                // work out which page to send user to (userNoHouse or yourHouse)
-                try {
-                    if (userInHouse()) {
-                        startActivity(new Intent(MainMenu.this , com.example.keep_it_together.YourHouse.class));
-                    } else {
-                        startActivity(new Intent(MainMenu.this , com.example.keep_it_together.UserNoHouse.class));
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (userInHouse) {
+                    startActivity(new Intent(MainMenu.this , com.example.keep_it_together.YourHouse.class));
+                } else {
+                    startActivity(new Intent(MainMenu.this , com.example.keep_it_together.UserNoHouse.class));
                 }
-
-                startActivity(new Intent(MainMenu.this , com.example.keep_it_together.UserNoHouse.class));
             }
         });
 
     }
 
-    private boolean userInHouse() throws IOException {
+    private void userLogic() throws IOException {
         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
         String userID = preferences.getString("userID", "");
+        userID = "4";
         Client dbConnection = new Client("86.9.93.210", 58934);
         String dbRequest = "SELECT user_id, house_id FROM HouseUsers WHERE user_id = '" + userID + "'";
         String[] dbResponse = dbConnection.select(dbRequest);
-        // if empty then no record exists so they arent part of any houses so return false
-        // otherwise return true
-        return !dbResponse[0].isEmpty();
+        if (dbResponse[0].isEmpty()) {
+            // if empty then not in a house
+            userInHouse = false;
+            // view button
+            btView.setAlpha(.5f);
+            btView.setClickable(false);
+            // add button
+            btAdd.setAlpha(.5f);
+            btAdd.setClickable(false);
+            // your tasks
+            btYourTasks.setAlpha(.5f);
+            btYourTasks.setClickable(false);
+        } else {
+            // if not empty then they are in a house
+            userInHouse = true;
+            SharedPreferences.Editor edit = preferences.edit();
+            edit.putString("houseID", dbResponse[1]);
+            edit.apply();
+        }
+
     }
 }
