@@ -131,4 +131,11 @@
         android:translationY="45dp"
         android:background="@drawable/round_button"/>
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationY="60dp"/>
+
 </LinearLayout>
