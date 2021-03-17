@@ -11,7 +11,7 @@ public class add {
 			if (complete) {
 				System.out.println("in 1");
 				String chores = "INSERT INTO Chores (description, house_id, last_completed) VALUES (";
-				chores += "'" + desc + "', " + houseId + ", '" + date.toString() + "')";
+				chores += "'" + desc + "', '" + houseId + "', '" + date.toString() + "')";
 				db.modify(chores);
 				choreId = db.select("SELECT chore_id FROM Chores WHERE description = '" + desc + "'")[0];
 				String choreRecords = "INSERT INTO ChoreRecords (user_id, chore_id, date_completed) VALUES (";
@@ -22,7 +22,7 @@ public class add {
 			else {
 				System.out.println("in 2");
 				String chores = "INSERT INTO Chores (description, house_id, last_completed) VALUES (";
-				chores += "'" + desc + "', " + houseId + ", 'null')";
+				chores += "'" + desc + "', '" + houseId + "', 'null')";
 				System.out.println(chores);
 				db.modify(chores);
 				assign.chore(choreId, userId);
@@ -59,13 +59,13 @@ public class add {
 			db.modify(products);
 			prodId = db.select("SELECT product_id FROM Products WHERE name = '" + name + "'")[0];
 			String trans = "INSERT INTO Transactions (user_id, house_id, date, product_id, price) VALUES (";
-			trans += userId + ", " + houseId + ", '" + date.toString() + "', " + prodId + ", " + price + ")";
+			trans += userId + ", '" + houseId + "', '" + date.toString() + "', " + prodId + ", " + price + ")";
 			db.modify(trans);
 		}
 		else {
 			prodId = checkArr[0];
 			String trans = "INSERT INTO Transactions (user_id, house_id, date, product_id, price) VALUES (";
-			trans += userId + ", " + houseId + ", '" + date.toString() + "', " + prodId + ", " + price + ")";
+			trans += userId + ", '" + houseId + "', '" + date.toString() + "', " + prodId + ", " + price + ")";
 			db.modify(trans);
 		}
 	}

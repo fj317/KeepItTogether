@@ -23,8 +23,8 @@ public class edit {
 	
 	public static void bill(String trnsId, String prodId, String houseId, String price, String userId, String date) throws IOException {
 		Client db = new Client("86.9.93.210", 58934);
-		String trans = "UPDATE Transactions SET user_id = " + userId + ", house_id = " + houseId;
-		trans += ", date = '" + date + "', product_id = " + prodId + ", price = " + price;
+		String trans = "UPDATE Transactions SET user_id = " + userId + ", house_id = '" + houseId;
+		trans += "', date = '" + date + "', product_id = " + prodId + ", price = " + price;
 		trans += " WHERE transaction_id = " + trnsId;
 		db.modify(trans);
 	}
