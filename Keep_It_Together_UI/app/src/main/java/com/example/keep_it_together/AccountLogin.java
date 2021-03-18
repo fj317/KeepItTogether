@@ -45,10 +45,10 @@ public class AccountLogin extends AppCompatActivity {
                 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                         .permitAll().build();
                 StrictMode.setThreadPolicy(policy);
-                //AccountLogin.AsyncTaskRunner runner = new AccountLogin.AsyncTaskRunner();
+                AccountLogin.AsyncTaskRunner runner = new AccountLogin.AsyncTaskRunner();
                 progressBar.setVisibility(View.VISIBLE);
-                //runner.execute();
-                startActivity(new Intent(AccountLogin.this , MainMenu.class));
+                runner.execute();
+                //startActivity(new Intent(AccountLogin.this , MainMenu.class));
             }
         });
 
@@ -97,7 +97,7 @@ public class AccountLogin extends AppCompatActivity {
                 return;
             }
             // hash password to compare
-            password = BCrypt.hashpw(password, BCrypt.gensalt(12));
+            //password = BCrypt.hashpw(password, BCrypt.gensalt(12));
 
             // if email is valid, then check the passwords match
             if (!dbResponse[2].equals(password)) {

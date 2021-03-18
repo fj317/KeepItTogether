@@ -23,11 +23,11 @@ public class MainMenu extends AppCompatActivity {
         btAdd = findViewById(R.id.bt_add);
         btYourTasks = findViewById(R.id.bt_your_tasks);
         btYourHouse = findViewById(R.id.bt_your_house);
-//        try {
-//            userLogic();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            userLogic();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         btYourTasks.setOnClickListener(new View.OnClickListener() {
             @Override

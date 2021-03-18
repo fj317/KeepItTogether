@@ -35,6 +35,7 @@
     <string name="create_your_house">Create Your House</string>
     <string name="enter_your_address">Enter your address</string>
     <string name="enter_your_postcode">Enter your postcode</string>
+    <string name="enter_the_number_of_residents">Enter the number of residents</string>
     <string-array name="names">
         <item>John</item>
         <!--        add users here-->
