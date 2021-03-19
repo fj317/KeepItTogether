@@ -81,7 +81,7 @@ public class AccountLogin extends AppCompatActivity {
             // check email address exists in databse
             // if exists, check password matches the one stored
             // if both true then login successful
-            String dbRequest = "SELECT user_id, email, password FROM users WHERE email = '" + email + "'";
+            String dbRequest = "SELECT user_id, email, password, salt FROM users WHERE email = '" + email + "'";
             String[] dbResponse = new String[3];
             try {
                 dbResponse = dbConnection.select(dbRequest);
@@ -97,10 +97,10 @@ public class AccountLogin extends AppCompatActivity {
                 return;
             }
             // hash password to compare
-            //password = BCrypt.hashpw(password, BCrypt.gensalt(12));
+            String hashPassword = BCrypt.hashpw(password, dbResponse[3]);
 
             // if email is valid, then check the passwords match
-            if (!dbResponse[2].equals(password)) {
+            if (!dbResponse[2].equals(hashPassword)) {
                 // if they dont match then error message
                 Toast.makeText(getApplicationContext(), "Invalid password",Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);

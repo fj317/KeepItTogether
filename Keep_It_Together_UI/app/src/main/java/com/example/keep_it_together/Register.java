@@ -61,11 +61,6 @@ public class Register extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            try {
-                System.out.println(Arrays.toString(dbConnection.select("SELECT user_id FROM users")));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
             String name = getText(etName);
             String email = getText(etEmail);
             String password = getText(etPassword);
@@ -113,7 +108,7 @@ public class Register extends AppCompatActivity {
                 e.printStackTrace();
             }
             // check if email is already in database
-            if (!(dbResponse[0] == null)) {
+            if (!(dbResponse[0].isEmpty())) {
                 // error message
                 Toast.makeText(getApplicationContext(), "Email already in use.",Toast.LENGTH_LONG).show();
                 progressBar.setVisibility(View.GONE);
@@ -121,10 +116,11 @@ public class Register extends AppCompatActivity {
             }
 
             // get hash of password
-            password = BCrypt.hashpw(password, BCrypt.gensalt(12));
+            String salt = BCrypt.gensalt(12);
+            password = BCrypt.hashpw(password, salt);
 
             // all validations check done so now add valid credentials to database
-            Boolean database = dbConnection.modify("INSERT INTO Users (email, password, name) VALUES ('" + email + "', '" + password + "', '" + name + "')");
+            Boolean database = dbConnection.modify("INSERT INTO Users (email, password, name, salt) VALUES ('" + email + "', '" + password + "', '" + name + "', '" + salt + "')");
             if (database) {
                 Toast.makeText(getApplicationContext(), "Register successful!",Toast.LENGTH_SHORT).show();
             } else {
