@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:textSize="40sp"
         android:fontFamily="monospace"
-        android:translationY="-150dp"
+        android:translationY="-100dp"
         android:paddingHorizontal="25dp"
         android:gravity="center"
         android:text="@string/create_your_house">
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:padding = "10dp"
         android:gravity = "center"
-        android:translationY="-125dp"
+        android:translationY="-75dp"
         android:background="@drawable/round_edit_text">
 
         <ImageView
@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:padding = "10dp"
         android:gravity = "center"
-        android:translationY="-75dp"
+        android:translationY="-25dp"
         android:background="@drawable/round_edit_text">
 
         <ImageView
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:padding = "10dp"
-        android:translationY="-25dp"
+        android:translationY="25dp"
         android:background="@drawable/round_edit_text">
 
         <ImageView
@@ -92,6 +92,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/bt_submit"
         android:text="@string/submit"
+        android:translationY="50dp"
         android:textColor="@android:color/white"
         android:layout_marginTop="30dp"
         android:background="@drawable/round_button"/>

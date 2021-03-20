@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -42,8 +43,12 @@ public class UserNoHouse extends AppCompatActivity {
                         // get userID for the current user
                         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
                         String userID = preferences.getString("userID", "");
-                        // call join house function
-                        // CALL FUNCTION HERE
+                        // join house function
+                        try {
+                            join(houseID, Integer.parseInt(userID));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                         // once successfully joined house put house code in preferences
                         storeHouseID(houseID);
 
@@ -60,7 +65,6 @@ public class UserNoHouse extends AppCompatActivity {
             }
         });
 
-
         btCreateHouse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +79,18 @@ public class UserNoHouse extends AppCompatActivity {
         SharedPreferences.Editor edit = preferences.edit();
         edit.putString("houseId", houseId);
         edit.apply();
+    }
+
+    private void join(String houseID, int userID) throws IOException {
+        Client dbConnection = new Client("86.9.93.210", 58934);
+        String[] find = dbConnection.select("SELECT house_id FROM House WHERE house_id = '" + houseID + "'");
+        if (find[0].isEmpty()) {
+            Toast.makeText(getApplicationContext(), "This household does not exist",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            dbConnection.modify("UPDATE House SET number_of_residents = number_of_residents + 1 WHERE house_id = '" + houseID + "'");
+            dbConnection.modify("INSERT INTO HouseUsers (user_id, house_id) VALUES (" + userID + ", '" + houseID + "')");
+        }
     }
 
 }
