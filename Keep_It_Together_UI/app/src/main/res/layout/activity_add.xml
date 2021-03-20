@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="150dp"
         android:layout_marginBottom="300dp">
 
         <TextView
@@ -23,7 +23,6 @@
             android:fontFamily="monospace"
             android:text="@string/add"
             android:textSize="50sp">
-
         </TextView>
 
     </LinearLayout>
@@ -33,7 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:translationX="3dp"
-        android:translationY="-265dp">
+        android:translationY="-265dp"
+        tools:ignore="UseSwitchCompatOrMaterialXml">
     </Switch>
 
     <LinearLayout
@@ -88,7 +88,7 @@
         android:padding = "10dp"
         android:gravity = "center"
         android:background="@android:color/holo_blue_dark"
-        android:translationY="-220dp">
+        android:translationY="-240dp">
 
 
         <EditText
@@ -106,7 +106,7 @@
         android:layout_width="wrap_content"
         android:padding = "10dp"
         android:gravity = "center"
-        android:translationY="-200dp"
+        android:translationY="-220dp"
         android:background="@android:color/holo_blue_dark">
 
         <EditText
@@ -126,7 +126,7 @@
         android:padding = "10dp"
         android:gravity = "center"
         android:background="@android:color/holo_blue_dark"
-        android:translationY="-180dp">
+        android:translationY="-200dp">
 
 
         <EditText
@@ -145,7 +145,7 @@
         android:padding = "10dp"
         android:gravity = "center"
         android:background="@android:color/holo_blue_dark"
-        android:translationY="-160dp">
+        android:translationY="-180dp">
 
 
         <EditText
@@ -157,6 +157,15 @@
             android:textColorHint="@android:color/white"
             android:background="@android:color/transparent"/>
     </LinearLayout>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:translationY="-160dp"
+        android:background="@drawable/round_button"
+        android:id="@+id/bt_submit"
+        android:text="@string/submit"
+        android:textColor="@android:color/white"/>
 
 
 

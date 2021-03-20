@@ -67,7 +67,6 @@ public class MainMenu extends AppCompatActivity {
     private void userLogic() throws IOException {
         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
         String userID = preferences.getString("userID", "");
-        userID = "4";
         Client dbConnection = new Client("86.9.93.210", 58934);
         String dbRequest = "SELECT user_id, house_id FROM HouseUsers WHERE user_id = '" + userID + "'";
         String[] dbResponse = dbConnection.select(dbRequest);
