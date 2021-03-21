@@ -19,7 +19,7 @@ public class Household {
 
     public void join(String houseID, int userID) throws IOException {
         Client dbConnection = new Client("86.9.93.210", 58934);
-        String[] find = dbConnection.select("SELECT house_id FROM House WHERE house_id = '" + houseID + "'");
+        String[] find = dbConnection.select("SELECT house_id FROM House WHERE house_id = '" + houseID.toLowerCase() + "'");
         if (find[0].isEmpty()) {
             System.out.println("This household does not exist.");
         }
