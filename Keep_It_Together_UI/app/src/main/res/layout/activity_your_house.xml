@@ -9,5 +9,65 @@
     android:gravity = "center"
     android:background="@android:color/holo_blue_light"
     tools:context=".YourHouse">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="50dp"
+        android:fontFamily="monospace"
+        android:layout_marginTop="-200dp"
+        android:text="@string/your_house"/>
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:fontFamily="monospace"
+            android:text="@string/your_housemates"/>
+
+        <ScrollView
+            android:layout_width="250dp"
+            android:layout_height="150dp"
+            android:background="#A7A8AA">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:fontFamily="monospace"
+                android:textColor="#EC4849"
+                android:id="@+id/txt_users"/>
+        </ScrollView>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:fontFamily="monospace"
+        android:text="@string/house_join_code"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:fontFamily="monospace"
+        android:textColor="#EC4849"
+        android:id="@+id/txt_houseJoinCode"
+        />
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/menu_button"
+        android:textSize="25dp"
+        android:id="@+id/bt_leave"
+        android:text="Leave House"
+        />
 
 </LinearLayout>

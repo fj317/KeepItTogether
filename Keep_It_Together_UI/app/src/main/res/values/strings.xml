@@ -36,6 +36,8 @@
     <string name="enter_your_address">Enter your address</string>
     <string name="enter_your_postcode">Enter your postcode</string>
     <string name="enter_the_number_of_residents">Enter the number of residents</string>
+    <string name="your_housemates">Your Housemates:</string>
+    <string name="house_join_code">House Join Code:</string>
     <string-array name="names">
         <item>John</item>
         <!--        add users here-->
