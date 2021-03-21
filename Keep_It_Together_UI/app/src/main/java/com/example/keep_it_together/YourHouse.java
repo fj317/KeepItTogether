@@ -66,7 +66,6 @@ public class YourHouse extends AppCompatActivity {
                 SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
                 String houseID = preferences.getString("houseID", "");
                 txt_houseJoinCode.setText(houseID);
-                //String dbRequest = "SELECT user_id FROM HouseUsers WHERE house_id = '" + houseID + "'";
                 String dbRequest = "SELECT name FROM Users WHERE user_id = (SELECT user_id FROM HouseUsers WHERE house_id = '" + houseID + "')";
                 try {
                     StringBuilder users = new StringBuilder();
