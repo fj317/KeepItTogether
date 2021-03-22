@@ -1,16 +1,15 @@
 package com.example.keep_it_together;
-import android.content.Intent;
-import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 
 import java.io.IOException;
-
 
 public class Edit extends AppCompatActivity {
     Client dbConnection = null;
@@ -19,6 +18,7 @@ public class Edit extends AppCompatActivity {
     String task = "chore";
     Button save_button;
     EditText description , cost , name;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +76,7 @@ public class Edit extends AppCompatActivity {
                 cost = findViewById(R.id.et_edit_cost);
                 if(task.equals("transaction")){
                     cost_text = dbConnection.select("SELECT price FROM transactions WHERE transaction_id = " + task_id);
-                    cost.setVisibility(View.VISIBLE);
+                    cost.setVisibility(android.view.View.VISIBLE);
                     cost.setText("Cost: " + cost_text);
                 }
 

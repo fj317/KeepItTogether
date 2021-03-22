@@ -5,7 +5,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Settings">
+        android:background="@android:color/holo_blue_light"
+    tools:context=".Settings">
     <TextView
             android:text="Settings"
             android:layout_width="match_parent"
@@ -60,8 +61,10 @@
             app:layout_constraintStart_toStartOf="@+id/textView6"/>
     <Button
             android:text="Update"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/round_button"
+            android:textColor="@android:color/white"
             android:id="@+id/updateButton" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="16dp" android:textSize="24sp"/>

@@ -96,7 +96,7 @@ public class Add extends AppCompatActivity {
             } else {
                 // if not checked then is chore
                 try {
-                    chore(description, houseID, false, userID);
+                    chore(description, houseID, false, userID, name);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -106,70 +106,53 @@ public class Add extends AppCompatActivity {
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private void chore(String desc, String houseId, boolean complete, String userId) throws IOException {
+    private static void chore(String desc, String houseId, boolean complete, String userId, String name) throws IOException {
         LocalDate date = LocalDate.now();
+        Client db = new Client("86.9.93.210", 58934);
         String choreId = "";
-        String[] checkArr = dbConnection.select("SELECT chore_id FROM Chores WHERE description = '" + desc + "'");
+        String[] checkArr = db.select("SELECT chore_id FROM Chores WHERE name = '" + name + "'");
         if (checkArr[0].isEmpty()) {
             if (complete) {
-                System.out.println("in 1");
-                String chores = "INSERT INTO Chores (description, house_id, last_completed) VALUES (";
-                chores += "'" + desc + "', '" + houseId + "', '" + date.toString() + "')";
-                dbConnection.modify(chores);
-                choreId = dbConnection.select("SELECT chore_id FROM Chores WHERE description = '" + desc + "'")[0];
+                String chores = "INSERT INTO Chores (description, house_id, last_completed, name, active) VALUES (";
+                chores += "'" + desc + "', '" + houseId + "', '" + date.toString() + "', '" + name + "', + 0)";
+                db.modify(chores);
+                choreId = db.select("SELECT chore_id FROM Chores WHERE description = '" + desc + "'")[0];
                 String choreRecords = "INSERT INTO ChoreRecords (user_id, chore_id, date_completed) VALUES (";
                 choreRecords += userId + ", " + choreId + ", '" + date.toString() + "')";
-                dbConnection.modify(choreRecords);
+                db.modify(choreRecords);
                 Assign.chore(choreId, userId);
             }
             else {
-                System.out.println("in 2");
-                String chores = "INSERT INTO Chores (description, house_id, last_completed) VALUES (";
-                chores += "'" + desc + "', '" + houseId + "', 'null')";
-                System.out.println(chores);
-                dbConnection.modify(chores);
+                String chores = "INSERT INTO Chores (description, house_id, last_completed, name, active) VALUES (";
+                chores += "'" + desc + "', '" + houseId + "', 'null', '" + name + "', 1)";
+                db.modify(chores);
                 Assign.chore(choreId, userId);
             }
         }
         else {
             choreId = checkArr[0];
             if (complete) {
-                System.out.println("in 3");
                 String chores = "UPDATE Chores SET last_completed = '";
-                chores += date.toString() + "' WHERE chore_id = " + choreId;
-                dbConnection.modify(chores);
+                chores += date.toString() + "', active = 0 WHERE chore_id = " + choreId;
+                db.modify(chores);
                 String choreRecords = "INSERT INTO ChoreRecords (user_id, chore_id, date_completed) VALUES (";
                 choreRecords += userId + ", " + choreId + ", '" + date.toString() + "')";
-                dbConnection.modify(choreRecords);
+                db.modify(choreRecords);
                 Assign.chore(choreId, userId);
             }
             else {
-                System.out.println("in 4");
+                String chores = "UPDATE Chores SET active = 1 WHERE chore_id = " + choreId;
+                db.modify(chores);
                 Assign.chore(choreId, userId);
             }
         }
     }
 
-    private void bill(String desc, String houseId, String price, String userId, String name) throws IOException {
+    private static void bill(String desc, String houseId, String price, String userId, String name) throws IOException {
         LocalDate date = LocalDate.now();
-        String prodId = "";
-        String[] checkArr = dbConnection.select("SELECT product_id FROM Products WHERE name = '" + name + "'");
-        if (checkArr[0].isEmpty()) {
-            System.out.println("empty");
-            String products = "INSERT INTO Products (name, description) VALUES ('";
-            products += name + "', '" + desc + "')";
-            dbConnection.modify(products);
-            prodId = dbConnection.select("SELECT product_id FROM Products WHERE name = '" + name + "'")[0];
-            String trans = "INSERT INTO Transactions (user_id, house_id, date, product_id, price) VALUES (";
-            trans += userId + ", '" + houseId + "', '" + date.toString() + "', " + prodId + ", " + price + ")";
-            dbConnection.modify(trans);
-        }
-        else {
-            prodId = checkArr[0];
-            String trans = "INSERT INTO Transactions (user_id, house_id, date, product_id, price) VALUES (";
-            trans += userId + ", '" + houseId + "', '" + date.toString() + "', " + prodId + ", " + price + ")";
-            dbConnection.modify(trans);
-        }
+        Client db = new Client("86.9.93.210", 58934);
+        String trans = "INSERT INTO Transactions (user_id, house_id, date, price, name, description) VALUES (";
+        trans += userId + ", '" + houseId + "', '" + date.toString() + "', " + price + ", '" + name + "', '" + desc + "')";
+        db.modify(trans);
     }
 }

@@ -60,17 +60,16 @@
         android:spinnerMode="dropdown" />
 
     <LinearLayout
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_width="wrap_content"
         android:padding = "10dp"
         android:gravity = "center"
         android:background="@android:color/holo_blue_dark"
-        android:translationY="-220dp">
-
+        android:translationY="-240dp">
 
         <EditText
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/et_edit_name"
             android:hint="@string/name"
             android:textColor="@android:color/white"
@@ -99,22 +98,22 @@
 
 
     <LinearLayout
-        android:layout_height="45dp"
         android:layout_width="wrap_content"
-        android:padding = "10dp"
-        android:gravity = "center"
+        android:layout_height="36dp"
         android:background="@android:color/holo_blue_dark"
+        android:gravity="center"
+        android:padding="10dp"
         android:translationY="-180dp">
 
 
         <EditText
-            android:layout_width="200dp"
-            android:layout_height="45dp"
             android:id="@+id/et_edit_cost"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
             android:hint="@string/cost"
             android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:background="@android:color/transparent"/>
+            android:textColorHint="@android:color/white" />
     </LinearLayout>
 
     <CheckBox

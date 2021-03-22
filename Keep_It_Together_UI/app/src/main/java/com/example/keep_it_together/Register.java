@@ -48,7 +48,7 @@ public class Register extends AppCompatActivity {
         });
     }
 
-    class AsyncTaskRunner extends AsyncTask<String, String, String> {
+    private class AsyncTaskRunner extends AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String... params) {
             try {

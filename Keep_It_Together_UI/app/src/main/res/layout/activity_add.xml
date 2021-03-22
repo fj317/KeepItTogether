@@ -83,17 +83,16 @@
         android:spinnerMode="dropdown" />
 
     <LinearLayout
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_width="wrap_content"
         android:padding = "10dp"
         android:gravity = "center"
         android:background="@android:color/holo_blue_dark"
         android:translationY="-240dp">
 
-
         <EditText
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/et_add_name"
             android:hint="@string/name"
             android:textColor="@android:color/white"
@@ -131,26 +130,7 @@
 
         <EditText
             android:layout_width="200dp"
-            android:layout_height="45dp"
-            android:id="@+id/et_add_repeat"
-            android:hint="@string/repeat"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:background="@android:color/transparent"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_height="45dp"
-        android:layout_width="wrap_content"
-        android:padding = "10dp"
-        android:gravity = "center"
-        android:background="@android:color/holo_blue_dark"
-        android:translationY="-180dp">
-
-
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="45dp"
+            android:layout_height="match_parent"
             android:id="@+id/et_add_cost"
             android:hint="@string/cost"
             android:textColor="@android:color/white"
@@ -161,7 +141,7 @@
     <Button
         android:layout_width="200dp"
         android:layout_height="45dp"
-        android:translationY="-160dp"
+        android:translationY="-180dp"
         android:background="@drawable/round_button"
         android:id="@+id/bt_submit"
         android:text="@string/submit"
