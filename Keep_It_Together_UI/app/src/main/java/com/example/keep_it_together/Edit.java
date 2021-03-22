@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -15,13 +16,15 @@ import java.io.IOException;
 
 public class Edit extends AppCompatActivity {
     Client dbConnection = null;
-    String task_id , new_desription , new_cost , new_name;
-    String[] description_text , cost_text, name_text;
+    String task_id , new_desription , new_cost , new_name , new_assigned_name , name_for_spinner;
+    String[] description_text , cost_text, name_text, assigned_name;
     String task = "chore";
+    String Task = "Chore";
     Button save_button;
     EditText description , cost , name;
     String userID, houseID;
     Spinner nameSpinner;
+    CheckBox check_box;
 
 
     @Override
@@ -34,11 +37,13 @@ public class Edit extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        nameSpinner = findViewById(R.id.name_spinner);
         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
         userID = preferences.getString("userID", "");
         houseID = preferences.getString("houseID", "");
 
+        nameSpinner = findViewById(R.id.name_spinner);
+
+        // get the spinner names
         String dbRequest = "SELECT name FROM Users INNER JOIN HouseUsers ON Users.user_id = HouseUsers.user_id WHERE house_id = '" + houseID + "'";
         try {
             dbConnection = new Client("86.9.93.210", 58934);
@@ -50,7 +55,6 @@ public class Edit extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         runner.execute();
     }
 
@@ -68,7 +72,7 @@ public class Edit extends AppCompatActivity {
             return null;
         }
         protected void onPostExecute(String result) {
-            // get the task id (chore or transaction)
+            // see if the task is a transaction  or chore
             Bundle bundle = getIntent().getExtras();
             if (bundle != null) {
                 if(bundle.getString("chore") != null){
@@ -76,14 +80,21 @@ public class Edit extends AppCompatActivity {
                 }else if((bundle.getString("transaction") != null)){
                     task_id = bundle.getString("transaction");
                     task = "transaction";
+                    Task = "Transaction";
                 }else{
                     System.out.println("error");
                 }
+
+                check_box = findViewById(R.id.checkBox2);
+                if(task.equals("transactions")){
+                    check_box.setVisibility(View.INVISIBLE);
+                }
+
             }
 
             try {
                 // getting previous task description
-                description_text = dbConnection.select("SELECT description FROM " + task + "s" + " WHERE " + task + "_id = " + task_id);
+                description_text = dbConnection.select("SELECT description FROM " + Task + "s" + " WHERE " + task + "_id = " + task_id);
                 description = findViewById(R.id.et_edit_description);
                 // setting description to what it was before
                 description.setText("Description: " + description_text[0]);
@@ -96,7 +107,7 @@ public class Edit extends AppCompatActivity {
                     cost.setText("Cost: " + cost_text);
                 }
 
-                name_text = dbConnection.select("SELECT name FROM " + task + "s" + " WHERE " + task + "_id = " + task_id);
+                name_text = dbConnection.select("SELECT name FROM " + Task + "s" + " WHERE " + task + "_id = " + task_id);
                 name = findViewById(R.id.et_edit_name);
                 // setting description to what it was before
                 name.setText("Name: " + name_text[0]);
@@ -114,7 +125,47 @@ public class Edit extends AppCompatActivity {
                     new_desription = getText(findViewById(R.id.et_edit_description));
                     new_cost = getText(findViewById(R.id.et_edit_cost));
                     new_name = getText(findViewById(R.id.et_edit_name));
-                    //...
+
+                    if(new_desription != null){
+                        dbConnection.modify("UPDATE " + Task + "s SET " + "description = " + new_desription + " WHERE " + task + "_id = " + task_id);
+                    }
+                    if(new_cost != null){
+                        dbConnection.modify("UPDATE " + Task + "s SET " + "cost = " + new_cost + " WHERE " + task + "_id = " + task_id);
+                    }
+                    if(new_name!= null){
+                        dbConnection.modify("UPDATE " + Task + "s SET " + "name = " + new_name + " WHERE " + task + "_id = " + task_id);
+                    }
+                    if(check_box.isChecked() && task.equals("chores")){
+                        dbConnection.modify("UPDATE chores SET completed = 1 WHERE chore_id = " + task_id);
+                    }
+
+                    try {
+                        if(task.equals("transactions")){
+                            assigned_name = dbConnection.select("SELECT user_id FROM transactions WHERE transaction_id = " + task_id);
+                        }else if(task.equals("chores")){
+                            assigned_name = dbConnection.select("SELECT user_id FROM ChoreUsers WHERE chore_id = " + task_id);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    new_assigned_name = nameSpinner.getSelectedItem().toString();
+                    if(!assigned_name[0].equals(new_assigned_name)){
+                        try {
+                            assigned_name = dbConnection.select("SELECT user_id FROM Users WHERE name = " + new_assigned_name);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        if(task.equals("chore")){
+                            dbConnection.modify("UPDATE ChoreUsers SET user_id = " + assigned_name[0] + " WHERE chore_id = " + task_id);
+                        }else if(task.equals("transactions")){
+                            dbConnection.modify("UPDATE Transactions SET user_id = " + assigned_name[0] + " WHERE transaction_id = " + task_id);
+                        }
+                    }
+
+
+
+
                 }
             });
         }
