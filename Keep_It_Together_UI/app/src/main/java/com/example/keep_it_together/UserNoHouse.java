@@ -117,7 +117,7 @@ public class UserNoHouse extends AppCompatActivity {
             dbConnection.modify("UPDATE House SET number_of_residents = number_of_residents + 1 WHERE house_id = '" + houseID + "'");
             dbConnection.modify("INSERT INTO HouseUsers (user_id, house_id) VALUES (" + userID + ", '" + houseID + "')");
             Toast.makeText(getApplicationContext(), "Successfully join your house",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(UserNoHouse.this , YourHouse.class));
+            startActivity(new Intent(UserNoHouse.this , MainMenu.class));
         }
     }
 
