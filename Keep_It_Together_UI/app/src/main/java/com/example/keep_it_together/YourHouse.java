@@ -78,7 +78,7 @@ public class YourHouse extends AppCompatActivity {
             if (!initialised) {
                 // if not initialised yet then set up page
                 txt_houseJoinCode.setText(houseID);
-                String dbRequest = "SELECT name FROM Users WHERE user_id = (SELECT user_id FROM HouseUsers WHERE house_id = '" + houseID + "')";
+                String dbRequest = "SELECT name FROM Users INNER JOIN HouseUsers ON Users.user_id = HouseUsers.user_id WHERE house_id = '" + houseID + "'";
                 try {
                     StringBuilder users = new StringBuilder();
                     String[] dbResponse = dbConnection.select(dbRequest);
