@@ -26,7 +26,7 @@ public class edit {
 	public static void bill(String trnsId, String houseId, String price, String userId, String date, String name, String desc) throws IOException {
 		Client db = new Client("86.9.93.210", 58934);
 		String trans = "UPDATE Transactions SET user_id = " + userId + ", house_id = '" + houseId;
-		trans += "', date = '" + date + "', price = " + price + ", name = '" + name + "', description = '" + desc + "'";
+		trans += "', date = '" + date + "', price = " + price + ", transaction_name = '" + name + "', description = '" + desc + "'";
 		trans += " WHERE transaction_id = " + trnsId;
 		db.modify(trans);
 	}
