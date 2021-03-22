@@ -1,3 +1,5 @@
+package com.example.ipgraphspage;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -83,14 +85,18 @@ public class Client {
     private String[] stringToList(String string){
         ArrayList<String> arrayItems = new ArrayList<String>();
         StringBuilder current = new StringBuilder();
+        Boolean lastComma = false;
         for(int i = 0; i< string.length(); i++){
             if(string.charAt(i) != '['){
+                if(string.charAt(i) == ','){
+                    lastComma = true;
+                }
                 if(string.charAt(i) == ',' || string.charAt(i) == ']'){
                     arrayItems.add(current.toString());
                     i = i + 1;
                     current = new StringBuilder();
                 }
-                else{
+                if(!lastComma){
                     current.append(string.charAt(i));
                 }
             }
