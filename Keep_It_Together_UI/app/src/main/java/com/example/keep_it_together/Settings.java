@@ -44,7 +44,7 @@ public class Settings extends AppCompatActivity {
             public void onClick(View view) {
                 AsyncTaskRunnerUpdate runner = new AsyncTaskRunnerUpdate();
                 runner.execute();
-                startActivity(new Intent(MainMenu.this , com.example.keep_it_together.YourTasks.class));
+                startActivity(new Intent(Settings.this , com.example.keep_it_together.YourHouse.class));
             }
         });
 
