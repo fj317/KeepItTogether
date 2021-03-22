@@ -67,7 +67,6 @@ public class Client {
             else{
                 return false;
             }
-
         } catch (IOException e) {
             System.out.println(e);
             return false;

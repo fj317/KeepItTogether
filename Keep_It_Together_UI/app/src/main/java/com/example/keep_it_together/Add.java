@@ -100,13 +100,10 @@ public class Add extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             String description = et_add_Description.getText().toString();
-<<<<<<< HEAD
             SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
             String userID = preferences.getString("userID", "");
             String houseID = preferences.getString("houseID", "");
 
-=======
->>>>>>> c26b4ff530a04101d6253e2e2b1a306a1ff10002
             String price = et_add_cost.getText().toString();
             String name = et_add_Name.getText().toString();
             // choose if transaction or chore
