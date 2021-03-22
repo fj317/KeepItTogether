@@ -93,6 +93,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:hint="@string/enter_password"
+            android:inputType="textPassword"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white" />
     </LinearLayout>
@@ -117,6 +118,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:hint="@string/re_enter_password"
+            android:inputType="textPassword"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white" />
     </LinearLayout>
