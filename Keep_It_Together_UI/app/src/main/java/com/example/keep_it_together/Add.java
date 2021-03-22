@@ -34,7 +34,6 @@ public class Add extends AppCompatActivity {
         setContentView(R.layout.activity_add);
         et_add_Name = findViewById(R.id.et_add_name);
         et_add_Description = findViewById(R.id.et_add_description);
-        et_add_repeat = findViewById(R.id.et_add_repeat);
         et_add_cost = findViewById(R.id.et_add_cost);
         btSubmit = findViewById(R.id.bt_submit);
         aSwitch = findViewById(R.id.chore_bill_switch);
