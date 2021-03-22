@@ -98,12 +98,9 @@ public class Edit extends AppCompatActivity {
                     new_desription = getText(findViewById(R.id.et_edit_description));
                     new_cost = getText(findViewById(R.id.et_edit_cost));
                     new_name = getText(findViewById(R.id.et_edit_name));
-
-
+                    //...
                 }
             });
-
-
         }
         private String getText(EditText textBox) {
             String text = textBox.getText().toString();
