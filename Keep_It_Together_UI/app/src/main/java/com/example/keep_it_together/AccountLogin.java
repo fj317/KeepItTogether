@@ -110,6 +110,7 @@ public class AccountLogin extends AppCompatActivity {
             String userID = dbResponse[0];
             // put userID into preferences
             SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+            preferences.edit().clear().apply();
             SharedPreferences.Editor edit = preferences.edit();
             edit.putString("userID", userID);
             edit.apply();
