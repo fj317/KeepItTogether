@@ -14,11 +14,11 @@ import java.io.IOException;
 
 public class Edit extends AppCompatActivity {
     Client dbConnection = null;
-    String task_id;
-    String[] description_text;
+    String task_id , new_desription , new_cost , new_name;
+    String[] description_text , cost_text, name_text;
     String task = "chore";
     Button save_button;
-    EditText description;
+    EditText description , cost , name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +70,21 @@ public class Edit extends AppCompatActivity {
                 description_text = dbConnection.select("SELECT description FROM " + task + "s" + " WHERE " + task + "_id = " + task_id);
                 description = findViewById(R.id.et_edit_description);
                 // setting description to what it was before
-                description.setText(description_text[0]);
+                description.setText("Description: " + description_text[0]);
+
+
+                cost = findViewById(R.id.et_edit_cost);
+                if(task.equals("transaction")){
+                    cost_text = dbConnection.select("SELECT price FROM transactions WHERE transaction_id = " + task_id);
+                    cost.setVisibility(View.VISIBLE);
+                    cost.setText("Cost: " + cost_text);
+                }
+
+                name_text = dbConnection.select("SELECT name FROM " + task + "s" + " WHERE " + task + "_id = " + task_id);
+                name = findViewById(R.id.et_edit_name);
+                // setting description to what it was before
+                name.setText("Name: " + name_text[0]);
+
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -81,12 +95,19 @@ public class Edit extends AppCompatActivity {
             save_button.setOnClickListener(new android.view.View.OnClickListener()  {
                 @Override
                 public void onClick(View v) {
-                    // get the task id from your tasks button
+                    new_desription = getText(findViewById(R.id.et_edit_description));
+                    new_cost = getText(findViewById(R.id.et_edit_cost));
+                    new_name = getText(findViewById(R.id.et_edit_name));
+
 
                 }
             });
 
 
+        }
+        private String getText(EditText textBox) {
+            String text = textBox.getText().toString();
+            return text;
         }
 
 
