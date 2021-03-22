@@ -23,7 +23,7 @@
     <string name="name">Name:</string>
     <string name="description">Description:</string>
     <string name="repeat">Repeat?</string>
-    <string name="cost">Cost:</string>
+    <string name="cost">Cost: £</string>
     <string name="edit">Edit</string>
     <string name="keepittogether">KeepItTogether</string>
     <string name="save">Save</string>

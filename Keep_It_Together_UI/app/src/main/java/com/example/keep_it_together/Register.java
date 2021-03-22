@@ -120,7 +120,8 @@ public class Register extends AppCompatActivity {
             password = BCrypt.hashpw(password, salt);
 
             // all validations check done so now add valid credentials to database
-            Boolean database = dbConnection.modify("INSERT INTO Users (email, password, name, salt) VALUES ('" + email + "', '" + password + "', '" + name + "', '" + salt + "')");
+            dbRequest = "INSERT INTO Users (email, password, name, salt) VALUES ('" + email + "', '" + password + "', '" + name + "', '" + salt + "')";
+            Boolean database = dbConnection.modify(dbRequest);
             if (database) {
                 Toast.makeText(getApplicationContext(), "Register successful!",Toast.LENGTH_SHORT).show();
             } else {

@@ -82,11 +82,12 @@ public class Client {
 
 
     private String[] stringToList(String string){
+        System.out.println(string);
         ArrayList<String> arrayItems = new ArrayList<String>();
         StringBuilder current = new StringBuilder();
         for(int i = 0; i< string.length(); i++){
-            if(string.charAt(i) != '['){
-                if(string.charAt(i) == ',' || string.charAt(i) == ']'){
+            if(string.charAt(i) != '[' && string.charAt(i) != ']'){
+                if(string.charAt(i) == ',' ){
                     arrayItems.add(current.toString());
                     i = i + 1;
                     current = new StringBuilder();
@@ -96,6 +97,7 @@ public class Client {
                 }
             }
         }
+        arrayItems.add(current.toString());
         String[] items = new String[arrayItems.size()];
         items = arrayItems.toArray(items);
         return items;
