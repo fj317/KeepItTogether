@@ -40,9 +40,5 @@
     <string name="house_join_code">House Join Code:</string>
     <string name="leave_house">Leave House</string>
     <string name="house_settings">House Settings</string>
-    <string-array name="names">
-        <item>John</item>
-        <!--        add users here-->
-    </string-array>
 
 </resources>

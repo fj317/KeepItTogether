@@ -6,8 +6,10 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import java.io.IOException;
 
@@ -18,6 +20,8 @@ public class Edit extends AppCompatActivity {
     String task = "chore";
     Button save_button;
     EditText description , cost , name;
+    String userID, houseID;
+    Spinner nameSpinner;
 
 
     @Override
@@ -30,6 +34,23 @@ public class Edit extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        nameSpinner = findViewById(R.id.name_spinner);
+        SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+        userID = preferences.getString("userID", "");
+        houseID = preferences.getString("houseID", "");
+
+        String dbRequest = "SELECT name FROM Users INNER JOIN HouseUsers ON Users.user_id = HouseUsers.user_id WHERE house_id = '" + houseID + "'";
+        try {
+            dbConnection = new Client("86.9.93.210", 58934);
+            String[] dbResponse = dbConnection.select(dbRequest);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_spinner_item, dbResponse);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            nameSpinner.setAdapter(adapter);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         runner.execute();
     }
 
@@ -47,11 +68,6 @@ public class Edit extends AppCompatActivity {
             return null;
         }
         protected void onPostExecute(String result) {
-            SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
-            // get the house_id and user_id
-            String house_Id = preferences.getString("houseID", "");
-            String user_Id = preferences.getString("userID", "");
-
             // get the task id (chore or transaction)
             Bundle bundle = getIntent().getExtras();
             if (bundle != null) {

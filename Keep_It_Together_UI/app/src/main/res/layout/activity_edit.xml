@@ -51,12 +51,11 @@
 
     <Spinner
         android:translationY="-255dp"
-        android:id="@+id/spinner_assignment"
+        android:id="@+id/name_spinner"
         style="@style/Widget.AppCompat.TextView.SpinnerItem"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:background="@android:drawable/btn_dropdown"
-        android:entries="@array/names"
         android:spinnerMode="dropdown" />
 
     <LinearLayout

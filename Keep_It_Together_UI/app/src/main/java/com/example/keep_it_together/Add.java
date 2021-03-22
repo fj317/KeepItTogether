@@ -12,9 +12,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -26,7 +28,9 @@ public class Add extends AppCompatActivity {
     EditText et_add_Name, et_add_Description , et_add_repeat , et_add_cost;
     Switch aSwitch;
     Button btSubmit;
+    Spinner nameSpinner;
     Client dbConnection = null;
+    String userID, houseID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,23 @@ public class Add extends AppCompatActivity {
         et_add_cost = findViewById(R.id.et_add_cost);
         btSubmit = findViewById(R.id.bt_submit);
         aSwitch = findViewById(R.id.chore_bill_switch);
+        nameSpinner = findViewById(R.id.name_spinner);
         et_add_cost.setVisibility(View.INVISIBLE);
+        SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+        userID = preferences.getString("userID", "");
+        houseID = preferences.getString("houseID", "");
+
+        String dbRequest = "SELECT name FROM Users INNER JOIN HouseUsers ON Users.user_id = HouseUsers.user_id WHERE house_id = '" + houseID + "'";
+        try {
+            dbConnection = new Client("86.9.93.210", 58934);
+            String[] dbResponse = dbConnection.select(dbRequest);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_spinner_item, dbResponse);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            nameSpinner.setAdapter(adapter);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         aSwitch.setOnClickListener(new View.OnClickListener() {
@@ -79,9 +99,6 @@ public class Add extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             String description = et_add_Description.getText().toString();
-            SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
-            String userID = preferences.getString("userID", "");
-            String houseID = preferences.getString("houseID", "");
             String price = et_add_cost.getText().toString();
             String name = et_add_Name.getText().toString();
             // choose if transaction or chore
