@@ -47,7 +47,7 @@ public class add {
 	public static void bill(String desc, String houseId, String price, String userId, String name) throws IOException {
 		LocalDate date = LocalDate.now();
 		Client db = new Client("86.9.93.210", 58934);
-		String trans = "INSERT INTO Transactions (user_id, house_id, date, price, name, description) VALUES (";
+		String trans = "INSERT INTO Transactions (user_id, house_id, date, price, transaction_name, description) VALUES (";
 		trans += userId + ", '" + houseId + "', '" + date.toString() + "', " + price + ", '" + name + "', '" + desc + "')";
 		db.modify(trans);
 	}
