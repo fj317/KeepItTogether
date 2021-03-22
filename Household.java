@@ -4,12 +4,13 @@ import java.util.Random;
 
 public class Household {
 
-    public void create(String address, String postcode, int numberOfResidents) throws IOException {
+    public void create(String address, String postcode, int userID) throws IOException {
         Client dbConnection = new Client("86.9.93.210", 58934);
         String[] find = dbConnection.select("SELECT house_id FROM House WHERE address = '" + address + "' AND postcode = '" + postcode + "'");
         if (find[0].isEmpty()) {
             String houseID = randomIdGenerator();
-            dbConnection.modify("INSERT INTO House (house_id, address, postcode, number_of_residents) VALUES ('" + houseID + "', '" + address + "', '" + postcode + "', " + numberOfResidents + ")");
+            dbConnection.modify("INSERT INTO House (house_id, address, postcode, number_of_residents) VALUES ('" + houseID + "', '" + address + "', '" + postcode + ", 1)");
+            dbConnection.modify("INSERT INTO HouseUsers (user_id, house_id) VALUES (" + userID + ", '" + houseID + "')");
         }
         else {
             System.out.println("This household has already been created.");
@@ -18,7 +19,7 @@ public class Household {
 
     public void join(String houseID, int userID) throws IOException {
         Client dbConnection = new Client("86.9.93.210", 58934);
-        String[] find = dbConnection.select("SELECT house_id FROM House WHERE house_id = '" + houseID + "'");
+        String[] find = dbConnection.select("SELECT house_id FROM House WHERE house_id = '" + houseID.toLowerCase() + "'");
         if (find[0].isEmpty()) {
             System.out.println("This household does not exist.");
         }

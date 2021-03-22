@@ -2,11 +2,14 @@ package com.example.keep_it_together;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +19,8 @@ import java.io.IOException;
 
 public class UserNoHouse extends AppCompatActivity {
     Button btCreateHouse, btJoinHouse;
+    EditText joinCodeInput;
+    Client dbConnection = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,26 +37,18 @@ public class UserNoHouse extends AppCompatActivity {
                 builder.setTitle("Enter house code:");
 
                 // Set up the input
-                final EditText input = new EditText(UserNoHouse.this);
-                builder.setView(input);
+                joinCodeInput = new EditText(UserNoHouse.this);
+                builder.setView(joinCodeInput);
 
                 // Set up the buttons
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String houseID = input.getText().toString();
-                        // get userID for the current user
-                        SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
-                        String userID = preferences.getString("userID", "");
-                        // join house function
-                        try {
-                            join(houseID, Integer.parseInt(userID));
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        // once successfully joined house put house code in preferences
-                        storeHouseID(houseID);
-
+                        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                                .permitAll().build();
+                        StrictMode.setThreadPolicy(policy);
+                        UserNoHouse.AsyncTaskRunner runner = new UserNoHouse.AsyncTaskRunner();
+                        runner.execute();
                     }
                 });
 
@@ -74,15 +71,44 @@ public class UserNoHouse extends AppCompatActivity {
 
     }
 
+    @SuppressLint("StaticFieldLeak")
+    private class AsyncTaskRunner extends AsyncTask<String, String, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                dbConnection = new Client("86.9.93.210", 58934);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            String houseID = joinCodeInput.getText().toString();
+            // get userID for the current user
+            SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+            String userID = preferences.getString("userID", "");
+            // join house function
+            try {
+                join(houseID, Integer.parseInt(userID));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            // once successfully joined house put house code in preferences
+            storeHouseID(houseID);
+        }
+    }
+
+
     private void storeHouseID(String houseId) {
         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
         SharedPreferences.Editor edit = preferences.edit();
-        edit.putString("houseId", houseId);
+        edit.putString("houseID", houseId);
         edit.apply();
     }
 
     private void join(String houseID, int userID) throws IOException {
-        Client dbConnection = new Client("86.9.93.210", 58934);
         String[] find = dbConnection.select("SELECT house_id FROM House WHERE house_id = '" + houseID + "'");
         if (find[0].isEmpty()) {
             Toast.makeText(getApplicationContext(), "This household does not exist",Toast.LENGTH_SHORT).show();
