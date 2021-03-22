@@ -97,6 +97,7 @@ public class Client {
                 }
             }
         }
+        arrayItems.add(current.toString());
         String[] items = new String[arrayItems.size()];
         items = arrayItems.toArray(items);
         return items;
