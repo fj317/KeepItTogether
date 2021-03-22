@@ -70,7 +70,7 @@
         <EditText
             android:layout_width="200dp"
             android:layout_height="match_parent"
-            android:id="@+id/et_add_name"
+            android:id="@+id/et_edit_name"
             android:hint="@string/name"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white"
@@ -95,25 +95,25 @@
             android:translationY="-50dp"
             android:background="@android:color/transparent"/>
     </LinearLayout>
-    
+
 
     <LinearLayout
-        android:layout_height="45dp"
         android:layout_width="wrap_content"
-        android:padding = "10dp"
-        android:gravity = "center"
+        android:layout_height="36dp"
         android:background="@android:color/holo_blue_dark"
-        android:translationY="-200dp">
+        android:gravity="center"
+        android:padding="10dp"
+        android:translationY="-180dp">
 
 
         <EditText
+            android:id="@+id/et_edit_cost"
             android:layout_width="200dp"
             android:layout_height="match_parent"
-            android:id="@+id/et_add_cost"
+            android:background="@android:color/transparent"
             android:hint="@string/cost"
             android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:background="@android:color/transparent"/>
+            android:textColorHint="@android:color/white" />
     </LinearLayout>
 
     <CheckBox

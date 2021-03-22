@@ -51,7 +51,4 @@ public class Household {
         }
         return randomID;
     }
-
-    public static void main(String[] args) throws IOException {
-    }
 }
