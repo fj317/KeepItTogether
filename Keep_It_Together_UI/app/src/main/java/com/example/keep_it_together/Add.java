@@ -101,13 +101,10 @@ public class Add extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             String description = et_add_Description.getText().toString();
-<<<<<<< HEAD
             SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
             String userID = preferences.getString("userID", "");
             String houseID = preferences.getString("houseID", "");
 
-=======
->>>>>>> 6cbcd43dab9c386af06bfad01d74d03d28207f5c
             String price = et_add_cost.getText().toString();
             String name = et_add_Name.getText().toString();
             String user = nameSpinner.getSelectedItem().toString();
