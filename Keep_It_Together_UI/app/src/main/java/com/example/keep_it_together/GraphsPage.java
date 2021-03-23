@@ -1,21 +1,18 @@
 package com.example.keep_it_together;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.*;
-import androidx.annotation.NonNull;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.PagerAdapter;
+
 import androidx.viewpager.widget.ViewPager;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -23,14 +20,13 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.google.android.material.tabs.TabLayout;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.*;
 
 public class GraphsPage extends AppCompatActivity {
 
-    TabAdapter adapter;
+    TabsAdapter adapter;
     TabLayout tabLayout;
     ViewPager viewPager;
     Client dbConnection;
@@ -55,7 +51,7 @@ public class GraphsPage extends AppCompatActivity {
 
         datePicker.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.spinner_item, dates));
 
-        adapter = new TabAdapter(getSupportFragmentManager());
+        adapter = new TabsAdapter(getSupportFragmentManager());
         adapter.addFragment(new ChoresFragment(), "Chores");
         adapter.addFragment(new TransactionFragment(), "Transactions");
         viewPager.setAdapter(adapter);

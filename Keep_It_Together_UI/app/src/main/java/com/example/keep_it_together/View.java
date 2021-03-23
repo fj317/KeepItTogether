@@ -27,7 +27,7 @@ public class View extends AppCompatActivity {
         btGraphs.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
-                startActivity(new Intent(View.this , com.example.keep_it_together.Graphs.class));
+                startActivity(new Intent(View.this , com.example.keep_it_together.GraphsPage.class));
             }
         });
 

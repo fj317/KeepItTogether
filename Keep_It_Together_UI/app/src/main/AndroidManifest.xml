@@ -16,7 +16,6 @@
         <activity android:name=".CreateHouse"></activity>
         <activity android:name=".UserNoHouse" />
         <activity android:name=".YourHouse" />
-        <activity android:name=".Graphs" />
         <activity android:name=".CompletedTasks" />
         <activity android:name=".YourTasks" />
         <activity android:name=".Edit" />
