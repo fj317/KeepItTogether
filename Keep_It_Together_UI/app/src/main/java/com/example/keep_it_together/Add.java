@@ -105,7 +105,10 @@ public class Add extends AppCompatActivity {
             String userID = preferences.getString("userID", "");
             String houseID = preferences.getString("houseID", "");
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8099bc274d02f5aae865f94318ef66ef8de55b4c
             String price = et_add_cost.getText().toString();
             String name = et_add_Name.getText().toString();
             String user = nameSpinner.getSelectedItem().toString();
