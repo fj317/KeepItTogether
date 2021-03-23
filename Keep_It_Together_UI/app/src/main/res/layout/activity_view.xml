@@ -56,7 +56,7 @@
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:id="@+id/bt_to_do"
-        android:text="@string/to_do"
+        android:text="@string/house_tasks"
         android:textColor="@android:color/white"
         android:translationY="-50dp"
         android:background="@drawable/menu_button"/>
