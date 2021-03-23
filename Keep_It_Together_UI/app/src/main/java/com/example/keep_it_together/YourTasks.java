@@ -57,15 +57,11 @@ public class YourTasks extends AppCompatActivity {
             String user_Id = preferences.getString("userID", "");
             try {
                 // getting tasks
-                chores = dbConnection.select("SELECT chore_id FROM chore_users WHERE user_id = ;" + user_Id);
-                transactions = dbConnection.select("SELECT transactions_id FROM transations WHERE house_id = ;" + house_Id + "AND" + "user_id = " + user_Id);
+                chores = dbConnection.select("SELECT chore_id, name FROM chore_users WHERE user_id = ;" + user_Id);
+                transactions = dbConnection.select("SELECT transactions_id, transaction_name FROM transations WHERE house_id = ;" + house_Id + "AND" + "user_id = " + user_Id);
                 // combining the 2 arrays
                 tasks = Arrays.copyOf(chores , chores.length + transactions.length);
                 System.arraycopy(transactions , 0 , tasks , chores.length , transactions.length);
-
-                // getting names of tasks
-                //TODO
-                // add names columns to chores and transaction so they can be displayed.
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -78,18 +74,18 @@ public class YourTasks extends AppCompatActivity {
             @SuppressLint("UseCompatLoadingForDrawables") Drawable buttonDrawableLayout = getDrawable(R.drawable.menu_button);
 
             ArrayList<Button> buttons = new ArrayList<Button>();
-            for(int i = 0; i <= numOfTasks+1; i++) {
+            for(int i = 0; i <= numOfTasks+1; i+=2) {
                 Button button = new Button(YourTasks.this);
                 buttons.add(button);
                 button.setBackground(buttonDrawableLayout);
-                //button.setTextColor(0xffffff);
+                button.setTextColor(0xffffff);
                 button.setTextSize(25);
                 // names of tasks here
-                button.setText("Task " + i);
+                button.setText(tasks[i+1]);
                 params.setMargins(0, 0, 0, 25);
                 button.setLayoutParams(params);
                 buttonLayout.addView(button);
-                if(i==chores.length)transaction=true;
+                if(i*2==chores.length)transaction=true;
 
                 int finalI = i;
                 button.setOnClickListener(new android.view.View.OnClickListener()  {
