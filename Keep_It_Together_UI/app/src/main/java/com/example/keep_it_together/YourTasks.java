@@ -59,6 +59,12 @@ public class YourTasks extends AppCompatActivity {
                 // getting tasks
                 chores = dbConnection.select("SELECT chore_id, name FROM Chores WHERE chore_id IN (" + "SELECT chore_id FROM ChoreUsers WHERE user_id = '" + user_Id + "'" + ")");
                 transactions = dbConnection.select("SELECT transaction_id, transaction_name FROM Transactions WHERE house_id = '" + house_Id + "' AND user_id = '" + user_Id + "'");
+                if (chores[0].isEmpty()) {
+                    chores = new String[0];
+                }
+                if (transactions[0].isEmpty()) {
+                    transactions = new String[0];
+                }
                 // combining the 2 arrays
                 tasks = Arrays.copyOf(chores , chores.length + transactions.length);
                 System.arraycopy(transactions , 0 , tasks , chores.length , transactions.length);
@@ -74,24 +80,27 @@ public class YourTasks extends AppCompatActivity {
             @SuppressLint("UseCompatLoadingForDrawables") Drawable buttonDrawableLayout = getDrawable(R.drawable.menu_button);
 
             ArrayList<Button> buttons = new ArrayList<Button>();
+            Boolean[] isTransaction = new Boolean[numOfTasks/2];
             for(int i = 0; i < numOfTasks; i+=2) {
                 Button button = new Button(YourTasks.this);
                 buttons.add(button);
                 button.setBackground(buttonDrawableLayout);
-                //button.setTextColor(0xffffff);
                 button.setTextSize(25);
                 // names of tasks here
                 button.setText(tasks[i+1]);
                 params.setMargins(0, 0, 0, 25);
                 button.setLayoutParams(params);
                 buttonLayout.addView(button);
-                if(i*2==chores.length)transaction=true;
+                if(i >= chores.length) {
+                    isTransaction[i/2] = true;
+                }
 
                 int finalI = i;
                 button.setOnClickListener(new android.view.View.OnClickListener()  {
 
                     @Override
                     public void onClick(View v) {
+
                         Bundle bundle = new Bundle();
                         if(!transaction) {
                             bundle.putString("chore", tasks[finalI]);

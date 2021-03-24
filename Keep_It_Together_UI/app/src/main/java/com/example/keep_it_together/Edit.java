@@ -111,7 +111,12 @@ public class Edit extends AppCompatActivity {
                     cost.setVisibility(View.INVISIBLE);
                 }
 
-                name_text = dbConnection.select("SELECT name FROM " + Task + "s" + " WHERE " + task + "_id = " + task_id);
+                if (task.equals("transaction")) {
+                    name_text = dbConnection.select("SELECT transaction_name FROM Transactions" + " WHERE transaction_id = " + task_id);
+
+                } else {
+                    name_text = dbConnection.select("SELECT name FROM Chores WHERE chore_id = " + task_id);
+                }
                 name = findViewById(R.id.et_edit_name);
                 // setting description to what it was before
                 name.setText(name_text[0]);
@@ -139,7 +144,11 @@ public class Edit extends AppCompatActivity {
                         }
                     }
                     if(!new_name.equals(name_text[0])){
-                        dbConnection.modify("UPDATE " + Task + "s SET " + "name = '" + new_name + "' WHERE " + task + "_id = " + task_id);
+                        if (task.equals("transaction")) {
+                            dbConnection.modify("UPDATE Transactions SET transaction_name = '" + new_name + "' WHERE transaction_id = " + task_id);
+                        } else {
+                            dbConnection.modify("UPDATE " + Task + "s SET " + "name = '" + new_name + "' WHERE " + task + "_id = " + task_id);
+                        }
                     }
                     if(check_box.isChecked() && task.equals("chore")){
                         dbConnection.modify("UPDATE chores SET completed = '1' WHERE chore_id = " + task_id);
