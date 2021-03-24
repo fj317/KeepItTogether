@@ -19,7 +19,7 @@
         <activity android:name=".CompletedTasks" />
         <activity android:name=".YourTasks" />
         <activity android:name=".Edit" />
-        <activity android:name=".ToDo" />
+        <activity android:name=".HouseTasks" />
         <activity android:name=".Add" />
         <activity android:name=".View" />
         <activity android:name=".MainMenu" />
