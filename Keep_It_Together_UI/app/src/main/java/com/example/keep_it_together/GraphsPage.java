@@ -259,7 +259,9 @@ public class GraphsPage extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             String[] response;
-            String request = "SELECT user_id, COUNT(user_id) FROM ChoreRecords WHERE date_completed > '" + date.toString() + "' AND user_id IN (SELECT user_id FROM Users WHERE house_id = '" + house_id + "') GROUP BY user_id";
+            SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+            String house_id = preferences.getString("houseID", "");
+            String request = "SELECT user_id, COUNT(user_id) FROM ChoreRecords WHERE date_completed > '" + date.toString() + "' AND user_id IN (SELECT user_id FROM HouseUsers WHERE house_id = '" + house_id + "') GROUP BY user_id";
             try{
                 response  = dbConnection.select(request);
                 if (!response[0].isEmpty()){

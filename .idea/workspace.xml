@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c8e86df7-7713-4a85-bba4-0555ad96010c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Keep_It_Together_UI/app/src/main/java/com/example/keep_it_together/GraphsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Keep_It_Together_UI/app/src/main/java/com/example/keep_it_together/GraphsPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,14 +72,22 @@
       <option name="project" value="LOCAL" />
       <updated>1616440608011</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fixed graph house thing">
+      <created>1616593944745</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1616593944745</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added in the view CompletedTasks with various adapters and views to go with" />
     <MESSAGE value="added in the settings page and the layout for it" />
     <MESSAGE value="added in the graphs page --&gt; may change later if i have more time" />
-    <option name="LAST_COMMIT_MESSAGE" value="added in the graphs page --&gt; may change later if i have more time" />
+    <MESSAGE value="fixed graph house thing" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed graph house thing" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1614781588636">
@@ -93,11 +102,11 @@
       <screen x="-1280" y="4" width="1280" height="984" />
     </state>
     <state x="-897" y="298" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1280.4.1280.984@-1280.4.1280.984" timestamp="1616440521484" />
-    <state x="-922" y="112" key="CommitChangelistDialog2" timestamp="1616440606528">
-      <screen x="-1280" y="4" width="1280" height="984" />
+    <state x="537" y="114" key="CommitChangelistDialog2" timestamp="1616593943783">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-922" y="112" key="CommitChangelistDialog2/0.0.1920.1040/-1280.4.1280.984@-1280.4.1280.984" timestamp="1616440606528" />
-    <state x="537" y="114" key="CommitChangelistDialog2/0.0.1920.1040/-1280.4.1280.984@0.0.1920.1040" timestamp="1616352641723" />
+    <state x="537" y="114" key="CommitChangelistDialog2/0.0.1920.1040/-1280.4.1280.984@0.0.1920.1040" timestamp="1616593943783" />
     <state x="632" y="125" key="FileChooserDialogImpl" timestamp="1616590212749">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -107,11 +116,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1614782807099" />
-    <state x="-912" y="232" key="Vcs.Push.Dialog.v2" timestamp="1616440612245">
-      <screen x="-1280" y="4" width="1280" height="984" />
+    <state x="552" y="241" key="Vcs.Push.Dialog.v2" timestamp="1616593948093">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-912" y="232" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1280.4.1280.984@-1280.4.1280.984" timestamp="1616440612245" />
-    <state x="552" y="241" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1280.4.1280.984@0.0.1920.1040" timestamp="1616352648402" />
+    <state x="552" y="241" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1280.4.1280.984@0.0.1920.1040" timestamp="1616593948093" />
     <state x="93" y="93" width="1095" height="495" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1614781566582">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -121,11 +130,11 @@
     </state>
     <state x="336" y="164" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1614787206456" />
     <state x="504" y="251" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1280.4.1280.984@0.0.1920.1040" timestamp="1616590049822" />
-    <state x="769" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1616593918792">
+    <state x="769" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1616594298516">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-767" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1280.4.1280.984@-1280.4.1280.984" timestamp="1616440562142" />
-    <state x="769" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1280.4.1280.984@0.0.1920.1040" timestamp="1616593918792" />
+    <state x="769" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1280.4.1280.984@0.0.1920.1040" timestamp="1616594298516" />
     <state x="267" y="231" key="new project wizard" timestamp="1616347312391">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
