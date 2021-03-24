@@ -35,6 +35,7 @@ public class GraphsPage extends AppCompatActivity {
     PieChart pieChartChore;
     PieChart pieChartTransaction;
     String date;
+    String house_id;
 
 
     @Override
@@ -107,14 +108,6 @@ public class GraphsPage extends AppCompatActivity {
                 if (i == 2){
                     date = "1700-0-0";
                 }
-                //Toast.makeText(getApplicationContext(), String.valueOf(date), Toast.LENGTH_LONG).show();
-                /*
-                AsyncTaskRunnerTransaction runner = new AsyncTaskRunnerTransaction();
-                runner.execute();
-                AsyncTaskRunnerChore runner2 = new AsyncTaskRunnerChore();
-                runner2.execute();
-
-                 */
                 updateChoreGraph();
                 updateTransactionGraph();
             }
@@ -227,7 +220,7 @@ public class GraphsPage extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
-            String house_id = preferences.getString("houseID", "");
+            house_id = preferences.getString("houseID", "");
             //String[] users = dbConnection.select("SELECT user_id FROM HouseUsers WHERE house_id = " + house_id);
             //String[] transactions = dbConnection.select("SELECT price FROM Transactions WHERE date > '" + date.toString() + "' AND user_id = " + user);
             String[] response;
