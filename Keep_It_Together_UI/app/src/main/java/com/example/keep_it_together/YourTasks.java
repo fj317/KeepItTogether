@@ -58,7 +58,7 @@ public class YourTasks extends AppCompatActivity {
             try {
                 // getting tasks
                 chores = dbConnection.select("SELECT chore_id, name FROM chore_users WHERE user_id = ;" + user_Id);
-                transactions = dbConnection.select("SELECT transactions_id, transaction_name FROM transations WHERE house_id = ;" + house_Id + "AND" + "user_id = " + user_Id);
+                transactions = dbConnection.select("SELECT transaction_id, transaction_name FROM ransations WHERE house_id = ;" + house_Id + "AND" + "user_id = " + user_Id);
                 // combining the 2 arrays
                 tasks = Arrays.copyOf(chores , chores.length + transactions.length);
                 System.arraycopy(transactions , 0 , tasks , chores.length , transactions.length);
