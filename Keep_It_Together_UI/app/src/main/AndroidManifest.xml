@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CreateHouse"></activity>
+        <activity android:name=".CreateHouse" />
         <activity android:name=".UserNoHouse" />
         <activity android:name=".YourHouse" />
         <activity android:name=".CompletedTasks" />

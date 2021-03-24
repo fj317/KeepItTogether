@@ -20,7 +20,7 @@ import java.util.Arrays;
 
 public class YourTasks extends AppCompatActivity {
     Client dbConnection = null;
-    String[] chores,transactions,tasks, chores_names;
+    String[] chores,transactions,tasks;
     int numOfTasks;
     boolean transaction = false;
 

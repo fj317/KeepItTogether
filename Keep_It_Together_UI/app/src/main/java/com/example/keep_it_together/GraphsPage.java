@@ -144,7 +144,7 @@ public class GraphsPage extends AppCompatActivity {
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
 
         if (choreData == null){
-            pieChartChore.setNoDataText("loading data ... ");
+            pieChartChore.setNoDataText("Loading data ... ");
             return;
         }
 
@@ -177,7 +177,7 @@ public class GraphsPage extends AppCompatActivity {
         pieChartTransaction = findViewById(R.id.transactionsPieChart);
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
         if (transactionData == null){
-            pieChartTransaction.setNoDataText("loading data ... ");
+            pieChartTransaction.setNoDataText("Loading data ... ");
             return;
         }
         Map<String, Float> typeAmountMap = new HashMap<>();
