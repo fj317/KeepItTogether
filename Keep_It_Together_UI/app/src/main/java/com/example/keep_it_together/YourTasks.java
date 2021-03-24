@@ -20,7 +20,7 @@ import java.util.Arrays;
 
 public class YourTasks extends AppCompatActivity {
     Client dbConnection = null;
-    String[] chores,transactions,tasks;
+    String[] chores,transactions,tasks, chores_names;
     int numOfTasks;
     boolean transaction = false;
 
@@ -57,7 +57,7 @@ public class YourTasks extends AppCompatActivity {
             String user_Id = preferences.getString("userID", "");
             try {
                 // getting tasks
-                chores = dbConnection.select("SELECT chore_id, name FROM Chores INNER JOIN ChoreUsers on ChoreUsers.chore_id = Chores.chore_id WHERE ChoreUsers.user_id = '" + user_Id + "'");
+                chores = dbConnection.select("SELECT chore_id, name FROM Chores WHERE chore_id IN (" + "SELECT chore_id FROM ChoreUsers WHERE user_id = '" + user_Id + "'" + ")");
                 transactions = dbConnection.select("SELECT transaction_id, transaction_name FROM Transactions WHERE house_id = '" + house_Id + "' AND user_id = '" + user_Id + "'");
                 // combining the 2 arrays
                 tasks = Arrays.copyOf(chores , chores.length + transactions.length);
@@ -74,11 +74,11 @@ public class YourTasks extends AppCompatActivity {
             @SuppressLint("UseCompatLoadingForDrawables") Drawable buttonDrawableLayout = getDrawable(R.drawable.menu_button);
 
             ArrayList<Button> buttons = new ArrayList<Button>();
-            for(int i = 0; i <= numOfTasks+1; i+=2) {
+            for(int i = 0; i < numOfTasks; i+=2) {
                 Button button = new Button(YourTasks.this);
                 buttons.add(button);
                 button.setBackground(buttonDrawableLayout);
-                button.setTextColor(0xffffff);
+                //button.setTextColor(0xffffff);
                 button.setTextSize(25);
                 // names of tasks here
                 button.setText(tasks[i+1]);
