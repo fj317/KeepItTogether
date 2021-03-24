@@ -146,6 +146,7 @@ public class Add extends AppCompatActivity {
                 String chores = "INSERT INTO Chores (description, house_id, last_completed, name, active) VALUES (";
                 chores += "'" + desc + "', '" + houseId + "', 'null', '" + name + "', 1)";
                 success = dbConnection.modify(chores);
+                choreId = dbConnection.select("SELECT chore_id FROM Chores WHERE name = '" + name + "'")[0];
         } else {
             // if does exist then set chore to active
             choreId = checkArr[0];
@@ -159,6 +160,8 @@ public class Add extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Chore successfully added",Toast.LENGTH_SHORT).show();
             // go back to main menu
             startActivity(new Intent(Add.this , MainMenu.class));
+        } else {
+            Toast.makeText(getApplicationContext(), "Error adding chore",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -167,6 +170,14 @@ public class Add extends AppCompatActivity {
         LocalDate date = LocalDate.now();
         String trans = "INSERT INTO Transactions (user_id, house_id, date, price, transaction_name, description) VALUES (";
         trans += userId + ", '" + houseId + "', '" + date.toString() + "', " + price + ", '" + name + "', '" + desc + "')";
-        dbConnection.modify(trans);
+        boolean success = dbConnection.modify(trans);
+        if (success) {
+            // give message
+            Toast.makeText(getApplicationContext(), "Transaction successfully added",Toast.LENGTH_SHORT).show();
+            // go back to main menu
+            startActivity(new Intent(Add.this , MainMenu.class));
+        } else {
+            Toast.makeText(getApplicationContext(), "Error adding transaction",Toast.LENGTH_SHORT).show();
+        }
     }
 }

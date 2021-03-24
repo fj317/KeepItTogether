@@ -12,7 +12,8 @@ public class Assign {
         Client db = new Client("86.9.93.210", 58934);
         String[] users = db.select("SELECT user_id FROM ChoreUsers WHERE chore_id = " + choreId);
         if (!Arrays.stream(users).anyMatch(userId::equals)) {
-            success = db.modify("INSERT INTO ChoreUsers(chore_id, user_id) VALUES ('" + choreId + "', '" + userId + "')");
+            String dbRequest = "INSERT INTO ChoreUsers (chore_id, user_id) VALUES ('" + choreId + "', '" + userId + "')";
+            success = db.modify(dbRequest);
         }
         return success;
     }
