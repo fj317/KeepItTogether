@@ -20,7 +20,7 @@ import java.util.Arrays;
 
 public class YourTasks extends AppCompatActivity {
     Client dbConnection = null;
-    String[] chores,transactions,tasks, task_names;
+    String[] chores,transactions,tasks;
     int numOfTasks;
     boolean transaction = false;
 
@@ -57,8 +57,13 @@ public class YourTasks extends AppCompatActivity {
             String user_Id = preferences.getString("userID", "");
             try {
                 // getting tasks
+<<<<<<< HEAD
                 chores = dbConnection.select("SELECT chore_id, name FROM chore_users WHERE user_id = ;" + user_Id);
                 transactions = dbConnection.select("SELECT transaction_id, transaction_name FROM ransations WHERE house_id = ;" + house_Id + "AND" + "user_id = " + user_Id);
+=======
+                chores = dbConnection.select("SELECT chore_id, name FROM Chores INNER JOIN ChoreUsers on ChoreUsers.chore_id = Chores.chore_id WHERE ChoreUsers.user_id = '" + user_Id + "'");
+                transactions = dbConnection.select("SELECT transaction_id, transaction_name FROM Transactions WHERE house_id = '" + house_Id + "' AND user_id = '" + user_Id + "'");
+>>>>>>> 7766bc30304812ae388f8e5a75c31db0be14d346
                 // combining the 2 arrays
                 tasks = Arrays.copyOf(chores , chores.length + transactions.length);
                 System.arraycopy(transactions , 0 , tasks , chores.length , transactions.length);
