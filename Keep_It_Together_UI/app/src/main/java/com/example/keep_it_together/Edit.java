@@ -2,6 +2,7 @@ package com.example.keep_it_together;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -86,7 +88,7 @@ public class Edit extends AppCompatActivity {
                 }
 
                 check_box = findViewById(R.id.checkBox2);
-                if(task.equals("transactions")){
+                if(task.equals("transaction")){
                     check_box.setVisibility(View.INVISIBLE);
                 }
 
@@ -97,20 +99,22 @@ public class Edit extends AppCompatActivity {
                 description_text = dbConnection.select("SELECT description FROM " + Task + "s" + " WHERE " + task + "_id = " + task_id);
                 description = findViewById(R.id.et_edit_description);
                 // setting description to what it was before
-                description.setText("Description: " + description_text[0]);
+                description.setText(description_text[0]);
 
 
                 cost = findViewById(R.id.et_edit_cost);
                 if(task.equals("transaction")){
                     cost_text = dbConnection.select("SELECT price FROM transactions WHERE transaction_id = " + task_id);
                     cost.setVisibility(android.view.View.VISIBLE);
-                    cost.setText("Cost: " + cost_text);
+                    cost.setText(cost_text[0]);
+                } else {
+                    cost.setVisibility(View.INVISIBLE);
                 }
 
                 name_text = dbConnection.select("SELECT name FROM " + Task + "s" + " WHERE " + task + "_id = " + task_id);
                 name = findViewById(R.id.et_edit_name);
                 // setting description to what it was before
-                name.setText("Name: " + name_text[0]);
+                name.setText(name_text[0]);
 
 
             } catch (IOException e) {
@@ -126,24 +130,26 @@ public class Edit extends AppCompatActivity {
                     new_cost = getText(findViewById(R.id.et_edit_cost));
                     new_name = getText(findViewById(R.id.et_edit_name));
 
-                    if(new_desription != null){
-                        dbConnection.modify("UPDATE " + Task + "s SET " + "description = " + new_desription + " WHERE " + task + "_id = " + task_id);
+                    if(!new_desription.equals(description_text[0])){
+                        dbConnection.modify("UPDATE " + Task + "s SET " + "description = '" + new_desription + "' WHERE " + task + "_id = " + task_id);
                     }
-                    if(new_cost != null){
-                        dbConnection.modify("UPDATE " + Task + "s SET " + "cost = " + new_cost + " WHERE " + task + "_id = " + task_id);
+                    if (task.equals("transaction")) {
+                        if(!new_cost.equals(cost_text[0])){
+                            dbConnection.modify("UPDATE " + Task + "s SET " + "cost = '" + new_cost + "' WHERE " + task + "_id = " + task_id);
+                        }
                     }
-                    if(new_name!= null){
-                        dbConnection.modify("UPDATE " + Task + "s SET " + "name = " + new_name + " WHERE " + task + "_id = " + task_id);
+                    if(!new_name.equals(name_text[0])){
+                        dbConnection.modify("UPDATE " + Task + "s SET " + "name = '" + new_name + "' WHERE " + task + "_id = " + task_id);
                     }
-                    if(check_box.isChecked() && task.equals("chores")){
-                        dbConnection.modify("UPDATE chores SET completed = 1 WHERE chore_id = " + task_id);
+                    if(check_box.isChecked() && task.equals("chore")){
+                        dbConnection.modify("UPDATE chores SET completed = '1' WHERE chore_id = " + task_id);
                     }
 
                     try {
-                        if(task.equals("transactions")){
-                            assigned_name = dbConnection.select("SELECT user_id FROM transactions WHERE transaction_id = " + task_id);
-                        }else if(task.equals("chores")){
-                            assigned_name = dbConnection.select("SELECT user_id FROM ChoreUsers WHERE chore_id = " + task_id);
+                        if(task.equals("transaction")){
+                            assigned_name = dbConnection.select("SELECT user_id FROM transactions WHERE transaction_id = '" + task_id + "'");
+                        }else if(task.equals("chore")){
+                            assigned_name = dbConnection.select("SELECT user_id FROM ChoreUsers WHERE chore_id = '" + task_id + "'");
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -157,15 +163,13 @@ public class Edit extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         if(task.equals("chore")){
-                            dbConnection.modify("UPDATE ChoreUsers SET user_id = " + assigned_name[0] + " WHERE chore_id = " + task_id);
-                        }else if(task.equals("transactions")){
-                            dbConnection.modify("UPDATE Transactions SET user_id = " + assigned_name[0] + " WHERE transaction_id = " + task_id);
+                            dbConnection.modify("UPDATE ChoreUsers SET user_id = '" + assigned_name[0] + "' WHERE chore_id = " + task_id);
+                        }else if(task.equals("transaction")){
+                            dbConnection.modify("UPDATE Transactions SET user_id = '" + assigned_name[0] + "' WHERE transaction_id = " + task_id);
                         }
                     }
-
-
-
-
+                    Toast.makeText(getApplicationContext(), "Edited successfully",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Edit.this , MainMenu.class));
                 }
             });
         }
