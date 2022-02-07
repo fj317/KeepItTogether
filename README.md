@@ -17,6 +17,7 @@ This work is a collobative effort to create a program that would help people sha
   - Adding additional chores/spendings to the house account.
   - Viewing the chores and spendings that are currently unresolved.
   - Viewing the user's specific chores and spendings. 
+  
 An demo video of the application is available [here](https://drive.google.com/file/d/1Kr3VCAy-QFgoxrU6CK3K3_n7cwnDGr0C/view?usp=sharing).
 
 ## Database
