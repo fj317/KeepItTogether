@@ -1,5 +1,5 @@
 # KeepItTogether
-This work is a collobative effort to create a program that would help people sharing a house plan and track their household chores and spendings. It aims to make it immensely easier for housemates to know what has been done or purchased, and to split their responsibilities evenly, making maintaining the household more efficient and organised. In this way, communication between housemates would be improved and, at the same time, misunderstandings would be minimised. A database is used to provide data storage, as well as security and authentication for users.
+This work is a collaborative effort to create a program that would help people sharing a house plan and track their household chores and spendings. It aims to make it immensely easier for housemates to know what has been done or purchased, and to split their responsibilities evenly, making maintaining the household more efficient and organised. In this way, communication between housemates would be improved and, at the same time, misunderstandings would be minimised. A database is used to provide data storage, as well as security and authentication for users.
 
 ## Getting Started
 1. Clone the repo
